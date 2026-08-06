@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sera ya Faragha - Angaza</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #4A6CF7 0%, #7B5CFC 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin: 20px 0;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .logo {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #1a1a2e;
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .last-updated {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section h2 {
+            font-size: 18px;
+            color: #4A6CF7;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h2 .icon {
+            font-size: 20px;
+        }
+        
+        .section p, .section li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .section ul {
+            padding-left: 20px;
+        }
+        
+        .section ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+        }
+        
+        .footer a {
+            color: #4A6CF7;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .section h2 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">🛡️</div>
+            <h1>Sera ya Faragha</h1>
+            <p>Angaza - Mwanga wa Biashara Yako</p>
+        </div>
+        
+        <div class="last-updated">
+            📅 Ilisasishwa Mwisho: <strong id="updateDate">Agosti 2024</strong>
+        </div>
+        
+        <!-- INTRODUCTION -->
+        <div class="section">
+            <h2><span class="icon">👋</span> Utangulizi</h2>
+            <p>
+                Karibu kwenye Angaza. Sera hii ya faragha inaeleza jinsi tunavyokusanya, kutumia,
+                kuhifadhi, na kulinda data yako binafsi unapotumia programu yetu (Angaza App).
+            </p>
+            <p style="margin-top: 10px;">
+                Tunathamini usiri wako na tunajitahidi kuhakikisha data yako inalindwa kwa kutumia
+                viwango vya juu vya usalama.
+            </p>
+        </div>
+        
+        <!-- DATA WE COLLECT -->
+        <div class="section">
+            <h2><span class="icon">📊</span> Data Tunazokusanya</h2>
+            <p>Tunakusanya data zifuatazo kutoka kwako:</p>
+            <ul>
+                <li><strong>Data ya Akaunti:</strong> Jina lako, barua pepe, na taarifa za kuingia.</li>
+                <li><strong>Data ya Biashara:</strong> Bidhaa, mauzo, madeni, na taarifa nyingine za biashara yako.</li>
+                <li><strong>Data ya Malipo:</strong> Taarifa za malipo unapolipia huduma za premium.</li>
+                <li><strong>Data ya Matumizi:</strong> Jinsi unavyotumia app, mwingiliano wako na vipengele mbalimbali.</li>
+            </ul>
+        </div>
+        
+        <!-- HOW WE USE DATA -->
+        <div class="section">
+            <h2><span class="icon">⚙️</span> Jinsi Tunavyotumia Data Yako</h2>
+            <p>Tunatumia data yako kwa madhumuni yafuatayo:</p>
+            <ul>
+                <li><strong>Kutoa Huduma:</strong> Kukusaidia kuweka rekodi za biashara yako, mauzo, madeni, na zaidi.</li>
+                <li><strong>Kuboresha App:</strong> Kuelewa jinsi unavyotumia app na kuboresha uzoefu wako.</li>
+                <li><strong>Usawazishaji wa Data:</strong> Kuhifadhi data yako kwenye cloud ili uweze kuipata kwenye vifaa mbalimbali.</li>
+                <li><strong>Mawasiliano:</strong> Kukutuma arifa na taarifa muhimu kuhusu app.</li>
+            </ul>
+        </div>
+        
+        <!-- DATA STORAGE & SECURITY -->
+        <div class="section">
+            <h2><span class="icon">🔒</span> Uhifadhi na Usalama wa Data</h2>
+            <p>
+                Data yako inahifadhiwa kwenye <strong>Firebase</strong> (Google Cloud Platform) ambayo
+                inatumia viwango vya juu vya usalama.
+            </p>
+            <ul>
+                <li><strong>Usimbuaji:</strong> Data yako inasimbiwa (encrypted) wakati wa kuhifadhiwa na wakati wa kusafirishwa.</li>
+                <li><strong>Udhibiti wa Upatikanaji:</strong> Ni wewe tu na watu unaoruhusu ndio wanaoweza kuona data yako.</li>
+                <li><strong>Uhifadhi Salama:</strong> Tunaweka data yako kwenye seva salama zilizolindwa.</li>
+            </ul>
+        </div>
+        
+        <!-- DATA SHARING -->
+        <div class="section">
+            <h2><span class="icon">🤝</span> Kushiriki Data</h2>
+            <p>
+                Hatushiriki data yako binafsi na wahusika wengine bila idhini yako, isipokuwa:
+            </p>
+            <ul>
+                <li><strong>Watoa Huduma:</strong> Tunashiriki data na watoa huduma wanaotusaidia kuendesha app (kama Firebase).</li>
+                <li><strong>Mahitaji ya Kisheria:</strong> Ikiwa inatakiwa na sheria au mahakama.</li>
+                <li><strong>Malipo:</strong> Data ya malipo inashirikiwa na mfumo wa malipo (Selcom) ili kuchakata malipo yako.</li>
+            </ul>
+        </div>
+        
+        <!-- YOUR RIGHTS -->
+        <div class="section">
+            <h2><span class="icon">👤</span> Haki Zako</h2>
+            <p>Una haki zifuatazo kuhusu data yako:</p>
+            <ul>
+                <li><strong>Kufikia:</strong> Unaweza kuona data yako wakati wowote kwenye app.</li>
+                <li><strong>Kusahihisha:</strong> Unaweza kubadilisha data yako kupitia mipangilio ya app.</li>
+                <li><strong>Kufuta:</strong> Unaweza kufuta akaunti yako na data zote zinazohusiana.</li>
+                <li><strong>Kujiondoa:</strong> Unaweza kujiondoa kwenye arifa wakati wowote.</li>
+            </ul>
+        </div>
+        
+        <!-- CHILDREN'S PRIVACY -->
+        <div class="section">
+            <h2><span class="icon">🧒</span> Usiri wa Watoto</h2>
+            <p>
+                Angaza haikusudiwi watoto chini ya umri wa miaka 13. Hatukusanyi data kutoka kwa watoto
+                kwa makusudi. Ikiwa unajua mtoto ametupa data yake, tafadhali wasiliana nasi.
+            </p>
+        </div>
+        
+        <!-- CHANGES TO POLICY -->
+        <div class="section">
+            <h2><span class="icon">🔄</span> Mabadiliko ya Sera</h2>
+            <p>
+                Tunaweza kubadilisha sera hii mara kwa mara. Tarehe ya mwisho ya sasisho itaonyeshwa
+                juu ya ukurasa huu. Tutakujulisha kuhusu mabadiliko makubwa kupitia app au barua pepe.
+            </p>
+        </div>
+        
+        <!-- CONTACT US -->
+        <div class="section">
+            <h2><span class="icon">📧</span> Wasiliana Nasi</h2>
+            <p>
+                Ikiwa una maswali, wasiwasi, au maoni kuhusu sera hii ya faragha, tafadhali wasiliana nasi:
+            </p>
+            <ul>
+                <li><strong>Barua Pepe:</strong> othmanbigbro06@gmail.com (Owner)</li>
+                <li><strong>Simu:</strong> +255 694 119 436 (Owner)</li>
+                <li><strong>Anwani:</strong> Dar es Salaam, Tanzania</li>
+            </ul>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>
+                &copy; 2024 <strong>Angaza</strong> - Mwanga wa Biashara Yako
+            </p>
+            <p style="margin-top: 5px;">
+                <a href="#">Nyumbani</a> • 
+                <a href="#">Masharti ya Matumizi</a> • 
+                <a href="#">Wasiliana Nasi</a>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Update date dynamically
+        const date = new Date();
+        const months = ['Januari', 'Februari', 'Machi', 'Aprili', 'Mei', 'Juni', 
+                        'Julai', 'Agosti', 'Septemba', 'Oktoba', 'Novemba', 'Desemba'];
+        document.getElementById('updateDate').textContent = 
+            months[date.getMonth()] + ' ' + date.getFullYear();
+    </script>
+</body>
+</html>
