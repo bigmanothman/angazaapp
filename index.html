@@ -39,8 +39,13 @@
         }
         
         .logo {
-            font-size: 36px;
             margin-bottom: 10px;
+        }
+        
+        .logo img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
         }
         
         .header h1 {
@@ -73,13 +78,7 @@
             font-size: 18px;
             color: #4A6CF7;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .section h2 .icon {
-            font-size: 20px;
+            font-weight: 700;
         }
         
         .section p, .section li {
@@ -134,19 +133,19 @@
         <!-- HEADER -->
         <div class="header">
             <div class="logo">
-    <img src="assets/images/angaza.png" alt="Angaza Logo" style="width: 70px; height: 70px; object-fit: contain;">
-</div>
+                <img src="assets/images/angaza.png" alt="Angaza Logo">
+            </div>
             <h1>Sera ya Faragha</h1>
             <p>Angaza - Mwanga wa Biashara Yako</p>
         </div>
         
         <div class="last-updated">
-            📅 Ilisasishwa Mwisho: <strong id="updateDate">Agosti 2024</strong>
+            Ilisasishwa Mwisho: <strong id="updateDate">...</strong>
         </div>
         
         <!-- INTRODUCTION -->
         <div class="section">
-            <h2><span class="icon">👋</span> Utangulizi</h2>
+            <h2>Utangulizi</h2>
             <p>
                 Karibu kwenye Angaza. Sera hii ya faragha inaeleza jinsi tunavyokusanya, kutumia,
                 kuhifadhi, na kulinda data yako binafsi unapotumia programu yetu (Angaza App).
@@ -159,7 +158,7 @@
         
         <!-- DATA WE COLLECT -->
         <div class="section">
-            <h2><span class="icon">📊</span> Data Tunazokusanya</h2>
+            <h2>Data Tunazokusanya</h2>
             <p>Tunakusanya data zifuatazo kutoka kwako:</p>
             <ul>
                 <li><strong>Data ya Akaunti:</strong> Jina lako, barua pepe, na taarifa za kuingia.</li>
@@ -171,7 +170,7 @@
         
         <!-- HOW WE USE DATA -->
         <div class="section">
-            <h2><span class="icon">⚙️</span> Jinsi Tunavyotumia Data Yako</h2>
+            <h2>Jinsi Tunavyotumia Data Yako</h2>
             <p>Tunatumia data yako kwa madhumuni yafuatayo:</p>
             <ul>
                 <li><strong>Kutoa Huduma:</strong> Kukusaidia kuweka rekodi za biashara yako, mauzo, madeni, na zaidi.</li>
@@ -183,7 +182,7 @@
         
         <!-- DATA STORAGE & SECURITY -->
         <div class="section">
-            <h2><span class="icon">🔒</span> Uhifadhi na Usalama wa Data</h2>
+            <h2>Uhifadhi na Usalama wa Data</h2>
             <p>
                 Data yako inahifadhiwa kwenye <strong>Firebase</strong> (Google Cloud Platform) ambayo
                 inatumia viwango vya juu vya usalama.
@@ -197,7 +196,7 @@
         
         <!-- DATA SHARING -->
         <div class="section">
-            <h2><span class="icon">🤝</span> Kushiriki Data</h2>
+            <h2>Kushiriki Data</h2>
             <p>
                 Hatushiriki data yako binafsi na wahusika wengine bila idhini yako, isipokuwa:
             </p>
@@ -210,7 +209,7 @@
         
         <!-- YOUR RIGHTS -->
         <div class="section">
-            <h2><span class="icon">👤</span> Haki Zako</h2>
+            <h2>Haki Zako</h2>
             <p>Una haki zifuatazo kuhusu data yako:</p>
             <ul>
                 <li><strong>Kufikia:</strong> Unaweza kuona data yako wakati wowote kwenye app.</li>
@@ -222,7 +221,7 @@
         
         <!-- CHILDREN'S PRIVACY -->
         <div class="section">
-            <h2><span class="icon">🧒</span> Usiri wa Watoto</h2>
+            <h2>Usiri wa Watoto</h2>
             <p>
                 Angaza haikusudiwi watoto chini ya umri wa miaka 13. Hatukusanyi data kutoka kwa watoto
                 kwa makusudi. Ikiwa unajua mtoto ametupa data yake, tafadhali wasiliana nasi.
@@ -231,7 +230,7 @@
         
         <!-- CHANGES TO POLICY -->
         <div class="section">
-            <h2><span class="icon">🔄</span> Mabadiliko ya Sera</h2>
+            <h2>Mabadiliko ya Sera</h2>
             <p>
                 Tunaweza kubadilisha sera hii mara kwa mara. Tarehe ya mwisho ya sasisho itaonyeshwa
                 juu ya ukurasa huu. Tutakujulisha kuhusu mabadiliko makubwa kupitia app au barua pepe.
@@ -240,7 +239,7 @@
         
         <!-- CONTACT US -->
         <div class="section">
-            <h2><span class="icon">📧</span> Wasiliana Nasi</h2>
+            <h2>Wasiliana Nasi</h2>
             <p>
                 Ikiwa una maswali, wasiwasi, au maoni kuhusu sera hii ya faragha, tafadhali wasiliana nasi:
             </p>
@@ -254,7 +253,7 @@
         <!-- FOOTER -->
         <div class="footer">
             <p>
-                &copy; 2024 <strong>Angaza</strong> - Mwanga wa Biashara Yako
+                &copy; 2026 <strong>Angaza</strong> - Mwanga wa Biashara Yako
             </p>
             <p style="margin-top: 5px;">
                 <a href="index.html">Sera ya Faragha</a> • 
@@ -265,12 +264,23 @@
     </div>
     
     <script>
-        // Update date dynamically
-        const date = new Date();
+        // ===== TAREHE KAMILI NA MUDA =====
+        const now = new Date();
+        
+        const days = ['Jumapili', 'Jumatatu', 'Jumanne', 'Jumatano', 'Alhamisi', 'Ijumaa', 'Jumamosi'];
         const months = ['Januari', 'Februari', 'Machi', 'Aprili', 'Mei', 'Juni', 
                         'Julai', 'Agosti', 'Septemba', 'Oktoba', 'Novemba', 'Desemba'];
-        document.getElementById('updateDate').textContent = 
-            months[date.getMonth()] + ' ' + date.getFullYear();
+        
+        const dayName = days[now.getDay()];
+        const day = now.getDate();
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        
+        const formattedDate = dayName + ', ' + day + ' ' + month + ' ' + year + ' ' + hours + ':' + minutes;
+        
+        document.getElementById('updateDate').textContent = formattedDate;
     </script>
 </body>
 </html>
