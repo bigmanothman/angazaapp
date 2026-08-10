@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masharti ya Matumizi - Angaza</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #4A6CF7 0%, #7B5CFC 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin: 20px 0;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .logo {
+            margin-bottom: 10px;
+        }
+        
+        .logo img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #1a1a2e;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .last-updated {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .section {
+            margin-bottom: 28px;
+        }
+        
+        .section h2 {
+            font-size: 18px;
+            color: #4A6CF7;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h2 .number {
+            display: inline-block;
+            background: #4A6CF7;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            flex-shrink: 0;
+        }
+        
+        .section h2 .icon {
+            font-size: 20px;
+        }
+        
+        .section p, .section li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .section ul {
+            padding-left: 20px;
+            margin-top: 6px;
+        }
+        
+        .section ul li {
+            margin-bottom: 6px;
+        }
+        
+        .section .sub-section {
+            margin-top: 12px;
+            padding-left: 16px;
+            border-left: 3px solid #4A6CF7;
+        }
+        
+        .section .sub-section h4 {
+            font-size: 14px;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+        
+        .section .sub-section p, 
+        .section .sub-section li {
+            font-size: 13px;
+            color: #555;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-top: 10px;
+            border-left: 4px solid #4A6CF7;
+        }
+        
+        .highlight-box p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+        
+        .highlight-box strong {
+            color: #1a1a2e;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+        }
+        
+        .footer a {
+            color: #4A6CF7;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .section h2 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                <img src="assets/images/angaza.png" alt="Angaza Logo">
+            </div>
+            <h1>Masharti ya Matumizi</h1>
+            <p>Angaza - Mwanga wa Biashara Yako</p>
+        </div>
+        
+        <div class="last-updated">
+            📅 Ilisasishwa Mwisho: <strong id="updateDate">Agosti 2024</strong>
+        </div>
+        
+        <!-- ============================================================ -->
+        <!-- SECTION 1: UTAMBULISHO NA KUKUBALI MASHARTI -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span class="number">1</span> Utambulisho na Kukubali Masharti</h2>
+            <p>
+                Karibu kwenye Angaza. Kwa kutengeneza akaunti, kupakua, au kutumia programu yetu (Angaza App),
+                unakubaliana na masharti haya yote. Tafadhali soma kwa makini kabla ya kuendelea.
+            </p>
+            <div class="highlight-box">
+                <p><strong>⚠️ Muhimu:</strong> Kama mtumiaji hakubaliani na masharti haya, hana ruhusa ya kutumia app.</p>
+            </div>
+        </div>
+        
+        <!-- ============================================================ -->
+        <!-- SECTION 2: USAJILI NA USIMAMIZI WA AKAUNTI -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span class="number">2</span> Usajili na Usimamizi wa Akaunti</h2>
+            <ul>
+                <li><strong>Umri:</strong> Wanaoruhusiwa kufungua akaunti ni wenye umri kuanzia miaka 13 na kuendelea.</li>
+                <li><strong>Taarifa za Ukweli:</strong> Mtumiaji anatakiwa kutoa taarifa za ukweli wakati wa kujisajili.</li>
+                <li><strong>Usalama wa Akaunti:</strong> Mtumiaji anawajibika kulinda namba yake ya siri (credentials). Chochote kinachofanyika kupitia akaunti yake ni uwajibikaji wake.</li>
+            </ul>
+        </div>
+        
+        <!-- ============================================================ -->
+        <!-- SECTION 3: UMILIKI WA APP NA HAKIMILIKI -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span class="number">3</span> Umiliki wa App na Hakimiliki</h2>
+            <ul>
+                <li><strong>Umiliki:</strong> Kodi (source code), muundo (UI/UX design), nembo (logo), na chapa ya app ni mali ya <strong>Athumani Almas Mwiha</strong> — mwanzilishi halali wa platform hii.</li>
+                <li><strong>Mamlaka:</strong> Mmiliki ndiye mwenye mamlaka ya kuongeza nafasi ya umiliki aidha kwa timu itayokua chini yake ama kwa washirika wataotaka kushirikiana nami. Ikifanyika updating au kuuza, mmiliki ndiye mwenye mamlaka ya kuamua.</li>
+                <li><strong>Marufuku:</strong> Mtumiaji haruhusiwi ku-copy, reverse engineer (kudhibiti/kufungua kodi), kurefusha au kuuza sehemu yoyote ya app bila kibali cha maandishi kutoka kwa mmiliki.</li>
+            </ul>
+        </div>
+        
+        <!-- ============================================================ -->
+        <!-- SECTION 4: HUDUMA ZA BURE NA PREMIUM -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span class="number">4</span> Masharti ya Huduma za Bure na Premium</h2>
+            
+            <div class="sub-section">
+                <h4>🆓 Huduma za Bure (Free)</h4>
+                <ul>
+                    <li>Kuhifadhi taarifa za bidhaa zinazoingia dukani na uwezo wa kuzihariri</li>
+                    <li>Kurekodi taarifa za mauzo ya bidhaa zinazotoka</li>
+                    <li>Kutengeneza ripoti kuhusu bidhaa zilizopo kwenye mfumo na mauzo yaliyofanyika kwa kipindi cha mwezi</li>
+                    <li>Kuhifadhi taarifa za madeni</li>
+                    <li>Kubadili mipangilio ya app kulingana na mahitaji husika</li>
+                    <li>Kusajili akaunti</li>
+                </ul>
+            </div>
+            
+            <div class="sub-section" style="margin-top:16px;">
+                <h4>⭐ Huduma za Kulipia (Premium)</h4>
+                <ul>
+                    <li><strong>Kuhifadhi data salama cloud ya Firebase</strong> — data zako zote zinahifadhiwa kwenye cloud salama</li>
+                    <li><strong>Kuzipakua data zilizopo Firebase</strong> — pale itakapohitajika (mfano: user anatumia kifaa kipya). Feature hii hulipiwa mara moja na kuwa accessible daima.</li>
+                    <li><strong>Upakiaji kiotomatiki</strong> — data zinapakiwa kiotomatiki baada ya kila saa 12 kwenda cloud ya Firebase.</li>
+                </ul>
+            </div>
+            
+            <div class="sub-section" style="margin-top:16px;">
+                <h4>💰 Vifurushi vya Premium</h4>
+                <ul>
+                    <li><strong>Wiki Mbili (14 siku):</strong> Tsh 2,500/=</li>
+                    <li><strong>Mwezi (30 siku):</strong> Tsh 5,000/=</li>
+                    <li><strong>Mwaka (365 siku):</strong> Tsh 60,000/=</li>
+                </ul>
+                <p style="font-size:13px; color:#666; margin-top:6px;">
+                    Kila kifurushi kitamfanya user apate huduma husika kwa muda husika bila punguzo ama ongezo lolote la huduma ama kiasi cha kifurushi kwa muda husika.
+                </p>
+            </div>
+            
+            <div class="sub-section" style="margin-top:16px;">
+                <h4>💳 Mfumo wa Malipo</h4>
+                <p>
+                    Malipo yanafanyika kupitia <strong>Selcom</strong> kwa kutumia API za mitandao:
+                    Airtel, Mixx By Yas, Halotel na Vodacom, pamoja na Benki kama CRDB, NMB, KCB, na nyinginezo zinazooperata Tanzania.
+                </p>
+            </div>
+            
+            <div class="sub-section" style="margin-top:16px;">
+                <h4>↩️ Sera ya Kurudishiwa Pesa (Refund Policy)</h4>
+                <p style="font-weight:600; color:#1a1a2e; margin-bottom:6px;">Pesa itarudishwa ikiwa:</p>
+                <ul>
+                    <li><strong>a.</strong> Mwamala wa Marudio (Double Deduction/Duplicate Charge) umetokea</li>
+                    <li><strong>b.</strong> Mteja amekatwa pesa lakini mfumo ukagoma kumfungulia (unlock) Premium Features</li>
+                    <li><strong>c.</strong> Billing Error (Kukatiwa kiasi tofauti)</li>
+                    <li><strong>d.</strong> Malipo ya Bahati Mbaya/Bila Ridhaa (Unauthorized Transaction) — ikiwa tu uthibitisho utakuwepo</li>
+                </ul>
+                <p style="font-weight:600; color:#1a1a2e; margin-top:10px; margin-bottom:6px;">Pesa haitarudishwa ikiwa:</p>
+                <ul>
+                    <li><strong>a.</strong> Mtumiaji Kubadili Mawazo (Change of Mind) baada ya kulipia feature kikamilifu</li>
+                    <li><strong>b.</strong> Mtumiaji akifungiwa akaunti (banned) kwa sababu ya utapeli, hacking, au kuweka taarifa za uongo</li>
+                    <li><strong>c.</strong> Kuchelewa Kuomba Refund (Outside the Refund Window) — siku 5 toka tatizo litokee</li>
+                    <li><strong>d.</strong> Mtumiaji Ameshatumia Data / Huduma Zote kwa muda husika</li>
+                    <li><strong>e.</strong> App inafanya kazi vizuri lakini mteja ana mtandao mbovu wa kwake binafsi au hakuwa na kifurushi cha internet</li>
+                </ul>
+            </div>
+            
+            <div class="sub-section" style="margin-top:16px;">
+                <h4>❌ Kughairi Usajili (Cancellation)</h4>
+                <p>
+                    Mtumiaji anaweza kughairi usajili kabla ya progress ya malipo haijawa successful — kabla hajaweka PIN yake ya siri kuthibitisha malipo. Baada ya hapo hawezi tena na hakuna kitachorudishwa ikiwa hatotoa sababu za msingi kwa hilo.
+                </p>
+            </div>
+        </div>
+        
+        <!-- ============================================================ -->
+        <!-- SECTION 5: MATUMIZI YALIYOPIGWA MARUFUKU -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span class="number">5</span> Matumizi Yaliyopigwa Marufuku</h2>
+            <p>Yafuatayo hayaruhusiwi kabisa:</p>
+            <ul>
+                <li>Kutumia app kufanya utapeli, udanganyifu, au biashara haramu.</li>
+                <li>Kuingiza data za uongo au kuingilia mifumo ya server (hacking / spamming / DDOS attacks).</li>
+                <li>Jaribio lolote la kumpokonya mtumiaji mwingine akaunti yake.</li>
+                <li>Kutumia robot au script yoyote kuchukua data (data scraping) kutoka kwenye app.</li>
+            </ul>
+        </div>
+        
+        <!-- ============================================================ -->
+        <!-- SECTION 6: ADHABU NA HATUA ZA UKIUKWAJI -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span class="number">6</span> Adhabu na Hatua za Ukiukwaji</h2>
+            <ul>
+                <li><strong>First warnings:</strong> Mfumo utampa maonyo kwa mara ya kwanza ikiwa user atajaribu kujaza taarifa zisizo halali ama kinyume na taratibu za kihalali (mfano: kuweka namba za simu za uongo ama taarifa za uongo kuhusu account).</li>
+                <li><strong>Kuzuiliwa kwa Muda (Temporary Suspension/Block):</strong> Akiendelea taarifa za uongo, mfumo utamzuia kwa muda — imma 30 mins ama saa kadhaa ama siku kadhaa.</li>
+                <li><strong>Kufungiwa Mazima (Permanent Account Termination/Ban):</strong> Mtumiaji atafungiwa mazima na access ikiwa atafanya: attacking attempt yoyote, threat yoyote, shughuli zozote za kitapeli kupitia mfumo.</li>
+                <li>Kama mtumiaji atafungiwa akaunti kwa ukiukaji wa masharti, hatarudishiwa fedha yoyote aliyolipia vifurushi vya Premium.</li>
+                <li>Mmiliki na timu yake wana Haki ya kumshitaki mtumiaji Mahakamani au kumripoti kwenye vyombo vya dola (Polisi/TCRA) kama amesababisha hasara ya kifedha au kiusalama kwa mfumo.</li>
+            </ul>
+        </div>
+        
+        <!-- ============================================================ -->
+        <!-- SECTION 7: UKOMO WA UWAJIBIKAJI -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span class="number">7</span> Ukomo wa Uwajibikaji</h2>
+            <ul>
+                <li>Mmiliki na timu yake hawatawajibika kwa hasara ya kibiashara, upotevu wa data, au kushindwa kufanya kazi kwa app kutokana na matatizo ya mtandao, au majanga yaliyo nje ya uwezo wao (Force Majeure).</li>
+                <li>App inatolewa <strong>"As Is"</strong> ikiwa kama ilivyo. Ikiwa kuna bugs zozote zitafixiwa au updates zitaongezwa baada ya kubainika na <strong>"As Available"</strong> muda wote patapokuwa na mtandao kwa baadhi ya features zitazohitajia mtandao.</li>
+            </ul>
+        </div>
+        
+        <!-- ============================================================ -->
+        <!-- SECTION 8: SHERIA INAYOTUONGOZA -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span class="number">8</span> Sheria Inayotuongoza</h2>
+            <p>
+                Masharti haya yataongozwa na kufasiriwa kulingana na <strong>Sheria za Jamhuri ya Muungano wa Tanzania</strong>.
+            </p>
+        </div>
+        
+        <!-- ============================================================ -->
+        <!-- FOOTER -->
+        <!-- ============================================================ -->
+        <div class="footer">
+            <p>
+                &copy; 2024 <strong>Angaza</strong> - Mwanga wa Biashara Yako
+            </p>
+            <p style="margin-top: 5px;">
+                <a href="#">Nyumbani</a> • 
+                <a href="privacy-policy.html">Sera ya Faragha</a> • 
+                <a href="#">Wasiliana Nasi</a>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Update date dynamically
+        const date = new Date();
+        const months = ['Januari', 'Februari', 'Machi', 'Aprili', 'Mei', 'Juni', 
+                        'Julai', 'Agosti', 'Septemba', 'Oktoba', 'Novemba', 'Desemba'];
+        document.getElementById('updateDate').textContent = 
+            months[date.getMonth()] + ' ' + date.getFullYear();
+    </script>
+</body>
+</html>
