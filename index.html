@@ -139,9 +139,9 @@
             <p>Angaza - Mwanga wa Biashara Yako</p>
         </div>
         
-        <div class="last-updated">
-            Ilisasishwa Mwisho: <strong id="updateDate">...</strong>
-        </div>
+       <div class="last-updated">
+    Ilisasishwa Mwisho: <strong>Jumapili, 10 Agosti 2025 19:10</strong>
+</div>
         
         <!-- INTRODUCTION -->
         <div class="section">
@@ -264,24 +264,5 @@
         </div>
     </div>
     
-    <script>
-        // ===== TAREHE KAMILI NA MUDA =====
-        const now = new Date();
-        
-        const days = ['Jumapili', 'Jumatatu', 'Jumanne', 'Jumatano', 'Alhamisi', 'Ijumaa', 'Jumamosi'];
-        const months = ['Januari', 'Februari', 'Machi', 'Aprili', 'Mei', 'Juni', 
-                        'Julai', 'Agosti', 'Septemba', 'Oktoba', 'Novemba', 'Desemba'];
-        
-        const dayName = days[now.getDay()];
-        const day = now.getDate();
-        const month = months[now.getMonth()];
-        const year = now.getFullYear();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        
-        const formattedDate = dayName + ', ' + day + ' ' + month + ' ' + year + ' ' + hours + ':' + minutes;
-        
-        document.getElementById('updateDate').textContent = formattedDate;
-    </script>
 </body>
 </html>
