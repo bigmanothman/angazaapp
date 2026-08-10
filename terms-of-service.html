@@ -198,7 +198,7 @@
         </div>
         
         <div class="last-updated">
-            📅 Ilisasishwa Mwisho: <strong id="updateDate">Agosti 2024</strong>
+            Ilisasishwa Mwisho: <strong id="updateDate">...</strong>
         </div>
         
         <!-- ============================================================ -->
@@ -211,7 +211,7 @@
                 unakubaliana na masharti haya yote. Tafadhali soma kwa makini kabla ya kuendelea.
             </p>
             <div class="highlight-box">
-                <p><strong>⚠️ Muhimu:</strong> Kama mtumiaji hakubaliani na masharti haya, hana ruhusa ya kutumia app.</p>
+                <p><strong>Muhimu:</strong> Kama mtumiaji hakubaliani na masharti haya, hana ruhusa ya kutumia app.</p>
             </div>
         </div>
         
@@ -246,7 +246,7 @@
             <h2><span class="number">4</span> Masharti ya Huduma za Bure na Premium</h2>
             
             <div class="sub-section">
-                <h4>🆓 Huduma za Bure (Free)</h4>
+                <h4>Huduma za Bure (Free)</h4>
                 <ul>
                     <li>Kuhifadhi taarifa za bidhaa zinazoingia dukani na uwezo wa kuzihariri</li>
                     <li>Kurekodi taarifa za mauzo ya bidhaa zinazotoka</li>
@@ -258,7 +258,7 @@
             </div>
             
             <div class="sub-section" style="margin-top:16px;">
-                <h4>⭐ Huduma za Kulipia (Premium)</h4>
+                <h4>Huduma za Kulipia (Premium)</h4>
                 <ul>
                     <li><strong>Kuhifadhi data salama cloud ya Firebase</strong> — data zako zote zinahifadhiwa kwenye cloud salama</li>
                     <li><strong>Kuzipakua data zilizopo Firebase</strong> — pale itakapohitajika (mfano: user anatumia kifaa kipya). Feature hii hulipiwa mara moja na kuwa accessible daima.</li>
@@ -267,7 +267,7 @@
             </div>
             
             <div class="sub-section" style="margin-top:16px;">
-                <h4>💰 Vifurushi vya Premium</h4>
+                <h4>Vifurushi vya Premium</h4>
                 <ul>
                     <li><strong>Wiki Mbili (14 siku):</strong> Tsh 2,500/=</li>
                     <li><strong>Mwezi (30 siku):</strong> Tsh 5,000/=</li>
@@ -279,7 +279,7 @@
             </div>
             
             <div class="sub-section" style="margin-top:16px;">
-                <h4>💳 Mfumo wa Malipo</h4>
+                <h4>Mfumo wa Malipo</h4>
                 <p>
                     Malipo yanafanyika kupitia <strong>Selcom</strong> kwa kutumia API za mitandao:
                     Airtel, Mixx By Yas, Halotel na Vodacom, pamoja na Benki kama CRDB, NMB, KCB, na nyinginezo zinazooperata Tanzania.
@@ -287,7 +287,7 @@
             </div>
             
             <div class="sub-section" style="margin-top:16px;">
-                <h4>↩️ Sera ya Kurudishiwa Pesa (Refund Policy)</h4>
+                <h4>Sera ya Kurudishiwa Pesa (Refund Policy)</h4>
                 <p style="font-weight:600; color:#1a1a2e; margin-bottom:6px;">Pesa itarudishwa ikiwa:</p>
                 <ul>
                     <li><strong>a.</strong> Mwamala wa Marudio (Double Deduction/Duplicate Charge) umetokea</li>
@@ -306,7 +306,7 @@
             </div>
             
             <div class="sub-section" style="margin-top:16px;">
-                <h4>❌ Kughairi Usajili (Cancellation)</h4>
+                <h4>Kughairi Usajili (Cancellation)</h4>
                 <p>
                     Mtumiaji anaweza kughairi usajili kabla ya progress ya malipo haijawa successful — kabla hajaweka PIN yake ya siri kuthibitisha malipo. Baada ya hapo hawezi tena na hakuna kitachorudishwa ikiwa hatotoa sababu za msingi kwa hilo.
                 </p>
@@ -363,6 +363,21 @@
         </div>
         
         <!-- ============================================================ -->
+        <!-- SECTION 9: MAWASILIANO (CONTACT US) -->
+        <!-- ============================================================ -->
+        <div class="section" id="contact">
+            <h2><span class="number">9</span> Wasiliana Nasi</h2>
+            <p>
+                Ikiwa una maswali, wasiwasi, au maoni kuhusu masharti haya ya matumizi, tafadhali wasiliana nasi:
+            </p>
+            <ul>
+                <li><strong>Barua Pepe:</strong> othmanbigbro06@gmail.com (Owner)</li>
+                <li><strong>Simu:</strong> +255 694 119 436 (Owner)</li>
+                <li><strong>Anwani:</strong> Dar es Salaam, Tanzania</li>
+            </ul>
+        </div>
+        
+        <!-- ============================================================ -->
         <!-- FOOTER -->
         <!-- ============================================================ -->
         <div class="footer">
@@ -370,20 +385,31 @@
                 &copy; 2024 <strong>Angaza</strong> - Mwanga wa Biashara Yako
             </p>
             <p style="margin-top: 5px;">
-                <a href="index.html">Sera Ya Faragha</a> • 
-                <a href="terms-of-service.html">Masharti ya matumizi</a> • 
-                <a href="#">Wasiliana Nasi</a>
+                <a href="privacy-policy.html">Sera ya Faragha</a> • 
+                <a href="terms-of-service.html">Masharti ya Matumizi</a> • 
+                <a href="#contact">Wasiliana Nasi</a>
             </p>
         </div>
     </div>
     
     <script>
-        // Update date dynamically
-        const date = new Date();
+        // ===== TAREHE KAMILI NA MUDA =====
+        const now = new Date();
+        
+        const days = ['Jumapili', 'Jumatatu', 'Jumanne', 'Jumatano', 'Alhamisi', 'Ijumaa', 'Jumamosi'];
         const months = ['Januari', 'Februari', 'Machi', 'Aprili', 'Mei', 'Juni', 
                         'Julai', 'Agosti', 'Septemba', 'Oktoba', 'Novemba', 'Desemba'];
-        document.getElementById('updateDate').textContent = 
-            months[date.getMonth()] + ' ' + date.getFullYear();
+        
+        const dayName = days[now.getDay()];
+        const day = now.getDate();
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        
+        const formattedDate = dayName + ', ' + day + ' ' + month + ' ' + year + ' ' + hours + ':' + minutes;
+        
+        document.getElementById('updateDate').textContent = formattedDate;
     </script>
 </body>
 </html>
