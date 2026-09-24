@@ -358,35 +358,122 @@
             text-decoration: underline;
         }
 
+                /* ===== HAMBURGER BUTTON (MOBILE ONLY) ===== */
+        .hamburger {
+            display: none;
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 1000;
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .hamburger:active {
+            transform: scale(0.95);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2.5px;
+            background: #4A6CF7;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== HAMBURGER ANIMATION (X wakati iko wazi) ===== */
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* ===== OVERLAY ===== */
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.visible {
+            display: block;
+            opacity: 1;
+        }
+        
+
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
+              @media (max-width: 900px) {
             .layout {
                 flex-direction: column;
                 padding: 12px;
             }
 
+            /* ===== HAMBURGER IONEKANE KWA MOBILE ===== */
+            .hamburger {
+                display: flex;
+            }
+
+            /* ===== SIDEBAR INATOKEA KUSHOTO (SLIDE-IN) ===== */
             .sidebar {
-                flex: none;
-                width: 100%;
-                position: relative;
+                position: fixed;
                 top: 0;
-                max-height: none;
+                left: 0;
+                height: 100vh;
+                width: 300px;
+                max-width: 85vw;
+                max-height: 100vh;
+                border-radius: 0 18px 18px 0;
+                z-index: 999;
+                transform: translateX(-100%);
+                transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                overflow-y: auto;
+                padding-top: 80px;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
             }
 
             .sidebar nav {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 4px;
+                display: block;
             }
 
             .sidebar nav a {
-                flex: 1 1 auto;
-                font-size: 12px;
-                padding: 8px 10px;
+                display: block;
+                font-size: 13px;
+                padding: 10px 14px;
             }
 
             .main {
                 padding: 24px 18px;
+                padding-top: 80px;
             }
 
             .header h1 {
@@ -397,6 +484,7 @@
                 font-size: 17px;
             }
         }
+
 
         @media (max-width: 600px) {
             .main {
@@ -414,10 +502,21 @@
     </style>
 </head>
 <body>
+
+    <!-- ===== HAMBURGER BUTTON (MOBILE ONLY) ===== -->
+    <button class="hamburger" id="hamburger" aria-label="Fungua Yaliyomo">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- ===== OVERLAY (MOBILE ONLY) ===== -->
+    <div class="overlay" id="overlay"></div>
+
     <div class="layout">
 
         <!-- ===== LEFT SIDEBAR NAVIGATION ===== -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <h3>📚 Yaliyomo</h3>
             <nav id="sidebarNav">
                 <a href="#utangulizi" class="active">Utangulizi</a>
@@ -1157,7 +1256,7 @@
 
             window.addEventListener('scroll', updateActiveNav);
 
-            // ===== SMOOTH SCROLL =====
+                       // ===== SMOOTH SCROLL =====
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -1168,10 +1267,50 @@
                             behavior: 'smooth'
                         });
                     }
+
+                    // ===== FUNGA SIDEBAR KWA MOBILE BAADA YA KUBONYEZA LINK =====
+                    closeSidebar();
                 });
             });
 
+            // ===== SIDEBAR TOGGLE (MOBILE) =====
+            const hamburger = document.getElementById('hamburger');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+
+            function openSidebar() {
+                sidebar.classList.add('open');
+                overlay.classList.add('visible');
+                hamburger.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('visible');
+                hamburger.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            hamburger.addEventListener('click', () => {
+                if (sidebar.classList.contains('open')) {
+                    closeSidebar();
+                } else {
+                    openSidebar();
+                }
+            });
+
+            overlay.addEventListener('click', closeSidebar);
+
+            // ===== FUNGA SIDEBAR KWA ESC KEY =====
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
         })();
+
     </script>
 </body>
 </html>
