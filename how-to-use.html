@@ -76,6 +76,121 @@
             border-left: 3px solid #4A6CF7;
         }
 
+                /* ===== NAV DROPDOWN ===== */
+        .nav-dropdown {
+            margin-bottom: 4px;
+        }
+
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a1a2e;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .nav-dropdown-toggle:hover {
+            background: #f0f4ff;
+            color: #4A6CF7;
+        }
+
+        .nav-dropdown-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-icon {
+            font-size: 15px;
+        }
+
+        .nav-dropdown-arrow {
+            font-size: 12px;
+            color: #999;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-dropdown.open .nav-dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+            padding-left: 8px;
+        }
+
+        .nav-dropdown.open .nav-dropdown-content {
+            max-height: 1200px;
+            margin-top: 4px;
+        }
+
+        .nav-dropdown-content a {
+            display: block;
+            padding: 8px 14px;
+            font-size: 12.5px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 2px;
+            transition: all 0.2s;
+            line-height: 1.4;
+        }
+
+        .nav-dropdown-content a:hover {
+            background: #f0f4ff;
+            color: #4A6CF7;
+            padding-left: 18px;
+        }
+
+        .nav-dropdown-content a.active {
+            background: #f0f4ff;
+            color: #4A6CF7;
+            font-weight: 600;
+            border-left: 3px solid #4A6CF7;
+        }
+
+        /* ===== MAIN HEADING (NAFAKA / VINYWAJI) ===== */
+        .main-heading {
+            text-align: center;
+            padding: 24px 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #f0f4ff, #f5f0ff);
+            border-radius: 16px;
+            border: 1px solid #e0e8ff;
+        }
+
+        .main-heading .main-icon {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .main-heading h2 {
+            font-size: 26px;
+            color: #4A6CF7;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .main-heading p {
+            font-size: 13px;
+            color: #666;
+        }
+
         /* ===== MAIN CONTENT ===== */
         .main {
             flex: 1;
@@ -558,26 +673,51 @@
 
     <div class="layout">
 
-        <!-- ===== LEFT SIDEBAR NAVIGATION ===== -->
+               <!-- ===== LEFT SIDEBAR NAVIGATION ===== -->
         <aside class="sidebar" id="sidebar">
             <h3>📚 Yaliyomo</h3>
             <nav id="sidebarNav">
                 <a href="#utangulizi" class="active">Utangulizi</a>
-                <a href="#form-nafaka">Kurekodi Bidhaa ya Nafaka</a>
-                <a href="#kipimo">Kipimo & Vifurushi</a>
-                <a href="#maelezo">Maelezo & Tarehe</a>
-                <a href="#bei">Taarifa za Bei</a>
-                <a href="#taarifa-zaidi">Taarifa za Ziada</a>
-                <a href="#hifadhi">Kuhifadhi Bidhaa</a>
-                <a href="#dashboard">Dashboard ya Nafaka</a>
-                <a href="#kuona">Kuona Taarifa Zote</a>
-                <a href="#kuhariri">Kuhariri Bidhaa</a>
-                <a href="#kujazilia">Kujazilia Bidhaa</a>
-                <a href="#mauzo">Page ya Mauzo</a>
-                <a href="#rekodi-mauzo">Kurekodi Mauzo</a>
-                <a href="#mwenendo">Mwenendo wa Mauzo</a>
-                <a href="#historia">Historia ya Mauzo</a>
-                <a href="#namna-mauzo">Namna ya Kurekodi Mauzo</a>
+
+                <!-- ===== DROPDOWN: NAFAKA ===== -->
+                <div class="nav-dropdown open" data-target="nafaka-main">
+                    <button class="nav-dropdown-toggle" type="button">
+                        <span class="nav-dropdown-label">
+                            <span class="nav-icon">🌾</span> Nafaka
+                        </span>
+                        <span class="nav-dropdown-arrow">▾</span>
+                    </button>
+                    <div class="nav-dropdown-content">
+                        <a href="#form-nafaka">Kurekodi Bidhaa ya Nafaka</a>
+                        <a href="#kipimo">Kipimo & Vifurushi</a>
+                        <a href="#maelezo">Maelezo & Tarehe</a>
+                        <a href="#bei">Taarifa za Bei</a>
+                        <a href="#taarifa-zaidi">Taarifa za Ziada</a>
+                        <a href="#hifadhi">Kuhifadhi Bidhaa</a>
+                        <a href="#dashboard">Dashboard ya Nafaka</a>
+                        <a href="#kuona">Kuona Taarifa Zote</a>
+                        <a href="#kuhariri">Kuhariri Bidhaa</a>
+                        <a href="#kujazilia">Kujazilia Bidhaa</a>
+                        <a href="#mauzo">Page ya Mauzo</a>
+                        <a href="#rekodi-mauzo">Kurekodi Mauzo</a>
+                        <a href="#mwenendo">Mwenendo wa Mauzo</a>
+                        <a href="#historia">Historia ya Mauzo</a>
+                        <a href="#namna-mauzo">Namna ya Kurekodi Mauzo</a>
+                    </div>
+                </div>
+
+                <!-- ===== DROPDOWN: VINYWAJI (TUPU KWA SASA) ===== -->
+                <div class="nav-dropdown" data-target="vinywaji-main">
+                    <button class="nav-dropdown-toggle" type="button">
+                        <span class="nav-dropdown-label">
+                            <span class="nav-icon">🥤</span> Vinywaji
+                        </span>
+                        <span class="nav-dropdown-arrow">▾</span>
+                    </button>
+                    <div class="nav-dropdown-content">
+                        <!-- CONTENT ITAONGEZWA BAADAYE -->
+                    </div>
+                </div>
             </nav>
         </aside>
 
@@ -620,18 +760,26 @@
                 <p>Hakuna matokeo yaliyopatikana</p>
             </div>
 
-            <!-- ===== SECTION: UTANGULIZI ===== -->
+                    <!-- ===== SECTION: UTANGULIZI ===== -->
             <div class="section" id="utangulizi">
                 <h2><span class="num">1</span> Utangulizi</h2>
                 <p>
                     Karibu kwenye muongozo wa kutumia App ya <strong>Angaza</strong>. Muongozo huu unaeleza hatua kwa hatua
-                    namna ya kurekodi na kusimamia bidhaa za <strong>Nafaka</strong> kwenye Mfumo.
+                    namna ya kurekodi na kusimamia bidhaa mbalimbali kwenye Mfumo.
                 </p>
-                <div class="note">
-                    <strong>NB:</strong> Muongozo huu unahusu bidhaa za <strong>Nafaka</strong> tu. Bidhaa nyingine zina muongozo wake tofauti.
-                </div>
+                <p>
+                    Chagua aina ya bidhaa uliyonayo upande wa kushoto ili kupata maelekezo yake kamili.
+                </p>
             </div>
 
+                        <!-- ===== MAIN SECTION: NAFAKA ===== -->
+            <div class="main-heading" id="nafaka-main">
+                <span class="main-icon">🌾</span>
+                <h2>Nafaka</h2>
+                <p>Muongozo kamili wa kurekodi na kusimamia bidhaa za Nafaka</p>
+            </div>
+
+            
             <!-- ===== SECTION: FORM NAFAKA ===== -->
             <div class="section" id="form-nafaka">
                 <h2><span class="num">2</span> Kurekodi Bidhaa ya Nafaka (Form Page)</h2>
@@ -1284,7 +1432,7 @@
                 searchInput.focus();
             });
 
-            // ===== SCROLL SPY =====
+                       // ===== SCROLL SPY =====
             function updateActiveNav() {
                 let current = '';
                 sections.forEach(section => {
@@ -1294,12 +1442,17 @@
                     }
                 });
 
-                navLinks.forEach(link => {
+                // ===== SIDEBAR LINKS ZOTE (pamoja na zilizo ndani ya dropdown) =====
+                const allNavLinks = document.querySelectorAll('#sidebarNav a');
+                allNavLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === '#' + current) {
                         link.classList.add('active');
                     }
                 });
+
+                // ===== HAKIKISHA DROPDOWN IPI INA ACTIVE CHILD INAFUNGULIWA =====
+                updateActiveDropdown();
             }
 
             window.addEventListener('scroll', updateActiveNav);
@@ -1320,6 +1473,28 @@
                     closeSidebar();
                 });
             });
+
+
+                        // ===== NAV DROPDOWN TOGGLE =====
+            const dropdownToggles = document.querySelectorAll('.nav-dropdown-toggle');
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const dropdown = toggle.closest('.nav-dropdown');
+                    dropdown.classList.toggle('open');
+                });
+            });
+
+            // ===== FUNGUA DROPDOWN IPI INA HUSIKA NA SECTION INAYOONEKANA =====
+            function updateActiveDropdown() {
+                document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                    const hasActiveChild = dropdown.querySelector('.nav-dropdown-content a.active');
+                    if (hasActiveChild) {
+                        dropdown.classList.add('open');
+                    }
+                });
+            }
+
 
             // ===== SIDEBAR TOGGLE (MOBILE) =====
             const hamburger = document.getElementById('hamburger');
