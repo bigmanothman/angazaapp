@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muongozo wa Kutumia - Angaza</title>
+    <link rel="icon" type="image/png" href="assets/images/angaza.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #4A6CF7 0%, #7B5CFC 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* ===== LAYOUT ===== */
+        .layout {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        /* ===== LEFT SIDEBAR NAVIGATION ===== */
+        .sidebar {
+            flex: 0 0 280px;
+            background: white;
+            border-radius: 18px;
+            padding: 24px 18px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            font-size: 15px;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            font-weight: 700;
+        }
+
+        .sidebar nav a {
+            display: block;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 4px;
+            transition: all 0.2s;
+            line-height: 1.4;
+        }
+
+        .sidebar nav a:hover {
+            background: #f0f4ff;
+            color: #4A6CF7;
+            padding-left: 18px;
+        }
+
+        .sidebar nav a.active {
+            background: #f0f4ff;
+            color: #4A6CF7;
+            font-weight: 600;
+            border-left: 3px solid #4A6CF7;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            min-width: 0;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .header .logo {
+            margin-bottom: 12px;
+        }
+
+        .header .logo img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: #1a1a2e;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+
+        /* ===== SEARCH BOX ===== */
+        .search-wrapper {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            border: 2px solid #e8eaf0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .search-box:focus-within {
+            border-color: #4A6CF7;
+            background: white;
+            box-shadow: 0 6px 20px rgba(74,108,247,0.15);
+        }
+
+        .search-box svg {
+            width: 20px;
+            height: 20px;
+            color: #999;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 14px;
+            width: 100%;
+            color: #333;
+            font-family: inherit;
+        }
+
+        .search-box input::placeholder {
+            color: #aaa;
+        }
+
+        .search-box .clear-btn {
+            background: #e8eaf0;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #666;
+            font-size: 14px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .search-box .clear-btn:hover {
+            background: #d0d4e0;
+        }
+
+        .search-box.has-text .clear-btn {
+            display: flex;
+        }
+
+        .search-info {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+            padding-left: 4px;
+            display: none;
+        }
+
+        .search-info.visible {
+            display: block;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            margin-bottom: 35px;
+            scroll-margin-top: 100px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            color: #4A6CF7;
+            margin-bottom: 14px;
+            font-weight: 700;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f4ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 .num {
+            background: linear-gradient(135deg, #4A6CF7, #7B5CFC);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section h3 {
+            font-size: 16px;
+            color: #1a1a2e;
+            margin: 18px 0 10px;
+            font-weight: 700;
+        }
+
+        .section h4 {
+            font-size: 14px;
+            color: #4A6CF7;
+            margin: 14px 0 8px;
+            font-weight: 700;
+        }
+
+        .section p, .section li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .section p {
+            margin-bottom: 10px;
+        }
+
+        .section ul, .section ol {
+            padding-left: 24px;
+            margin-bottom: 12px;
+        }
+
+        .section ul li, .section ol li {
+            margin-bottom: 8px;
+        }
+
+        /* ===== ATTRACTIVE BOLD (ISIPOKUWA PURPLE/RED) ===== */
+        .section strong {
+            color: #4A6CF7;
+            font-weight: 700;
+        }
+
+        /* ===== PURPLE NA RED ZINABAKI KAMA ZILIVYO ===== */
+        strong.purple {
+            color: #7B5CFC;
+            font-weight: 700;
+        }
+
+        strong.red {
+            color: #dc3545;
+            font-weight: 700;
+        }
+
+        /* ===== NOTE / NB BOX ===== */
+        .note {
+            background: #f0f4ff;
+            border-left: 4px solid #4A6CF7;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .note strong {
+            color: #4A6CF7;
+        }
+
+        /* ===== EXAMPLE BOX ===== */
+        .example {
+            background: #f8f9fa;
+            border-left: 4px solid #7B5CFC;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 10px 0;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .example strong {
+            color: #7B5CFC;
+        }
+
+        /* ===== HIGHLIGHT SEARCH MATCH ===== */
+        mark {
+            background: #fff3a3;
+            color: #1a1a2e;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 14px;
+            display: none;
+        }
+
+        .no-results.visible {
+            display: block;
+        }
+
+        .no-results svg {
+            width: 60px;
+            height: 60px;
+            color: #ddd;
+            margin-bottom: 12px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+        }
+
+        .footer a {
+            color: #4A6CF7;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .layout {
+                flex-direction: column;
+                padding: 12px;
+            }
+
+            .sidebar {
+                flex: none;
+                width: 100%;
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+
+            .sidebar nav a {
+                flex: 1 1 auto;
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .main {
+                padding: 24px 18px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .section h2 {
+                font-size: 17px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main {
+                padding: 20px 14px;
+            }
+
+            .search-wrapper {
+                top: 10px;
+            }
+
+            .section h2 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+
+        <!-- ===== LEFT SIDEBAR NAVIGATION ===== -->
+        <aside class="sidebar">
+            <h3>📚 Yaliyomo</h3>
+            <nav id="sidebarNav">
+                <a href="#utangulizi" class="active">Utangulizi</a>
+                <a href="#form-nafaka">Kurekodi Bidhaa ya Nafaka</a>
+                <a href="#kipimo">Kipimo & Vifurushi</a>
+                <a href="#maelezo">Maelezo & Tarehe</a>
+                <a href="#bei">Taarifa za Bei</a>
+                <a href="#taarifa-zaidi">Taarifa za Ziada</a>
+                <a href="#hifadhi">Kuhifadhi Bidhaa</a>
+                <a href="#dashboard">Dashboard ya Nafaka</a>
+                <a href="#kuona">Kuona Taarifa Zote</a>
+                <a href="#kuhariri">Kuhariri Bidhaa</a>
+                <a href="#kujazilia">Kujazilia Bidhaa</a>
+                <a href="#mauzo">Page ya Mauzo</a>
+                <a href="#rekodi-mauzo">Kurekodi Mauzo</a>
+                <a href="#mwenendo">Mwenendo wa Mauzo</a>
+                <a href="#historia">Historia ya Mauzo</a>
+                <a href="#namna-mauzo">Namna ya Kurekodi Mauzo</a>
+            </nav>
+        </aside>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="main">
+
+            <!-- HEADER -->
+            <div class="header">
+                <div class="logo">
+                    <img src="assets/images/angaza.png" alt="Angaza Logo">
+                </div>
+                <h1>Muongozo wa Kutumia</h1>
+                <p>Angaza - Mwanga wa Biashara Yako</p>
+            </div>
+
+            <!-- SEARCH BOX -->
+            <div class="search-wrapper">
+                <div class="search-box" id="searchBox">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Tafuta kitu... (mfano: Kiroba, Bei, Mauzo)">
+                    <button class="clear-btn" id="clearBtn">✕</button>
+                </div>
+                <div class="search-info" id="searchInfo"></div>
+            </div>
+
+            <!-- NO RESULTS -->
+            <div class="no-results" id="noResults">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <p>Hakuna matokeo yaliyopatikana</p>
+            </div>
+
+            <!-- ===== SECTION: UTANGULIZI ===== -->
+            <div class="section" id="utangulizi">
+                <h2><span class="num">1</span> Utangulizi</h2>
+                <p>
+                    Karibu kwenye muongozo wa kutumia App ya <strong>Angaza</strong>. Muongozo huu unaeleza hatua kwa hatua
+                    namna ya kurekodi na kusimamia bidhaa za <strong>Nafaka</strong> kwenye Mfumo.
+                </p>
+                <div class="note">
+                    <strong>NB:</strong> Muongozo huu unahusu bidhaa za <strong>Nafaka</strong> tu. Bidhaa nyingine zina muongozo wake tofauti.
+                </div>
+            </div>
+
+            <!-- ===== SECTION: FORM NAFAKA ===== -->
+            <div class="section" id="form-nafaka">
+                <h2><span class="num">2</span> Kurekodi Bidhaa ya Nafaka (Form Page)</h2>
+                <p>
+                    Ukiwa kwenye <strong>Dashboard page</strong>, bonyeza batani ya <strong>'+'</strong> ili uende kwenye
+                    form page utakapoweka taarifa za bidhaa.
+                </p>
+                <p>
+                    Ikifunguka form page, andika jina la bidhaa husika kwenye uwanja wa kuandikia wenye maandishi
+                    <strong>"Jina la Bidhaa *"</strong>.
+                </p>
+                <div class="note">
+                    <strong>NB:</strong> Jina lisizidi herufi <strong>100</strong> kuepusha mfumo kutohifadhi taarifa
+                    zisizohitajika za urefu wa jina.
+                </div>
+                <p>
+                    Kwenye kipengele cha <strong>'Aina ya Bidhaa *'</strong> chagua <strong>'Nafaka'</strong>.
+                </p>
+            </div>
+
+            <!-- ===== SECTION: KIPIMO ===== -->
+            <div class="section" id="kipimo">
+                <h2><span class="num">3</span> Kipimo & Vifurushi</h2>
+                <p>
+                    Itakuja sehemu ya <strong>'Kipimo *'</strong> ambapo hapa ukibonyeza utaona Menu ioneshayo namna
+                    unavyotaka bidhaa husika ichukuliwe kwenye Mfumo kupitia list ya vizio na vifurushi itayotokea:
+                </p>
+
+                <h4>i. Kilogramu (Kg)</h4>
+                <p>Hii itachukua bidhaa husika kwa <strong>Kg</strong>. Ukichagua hapa itatokea sehemu ya kuweka idadi yenye neno <strong>"Weka idadi ya Kg ulivyonavyo"</strong>. Ukiweka idadi sehemu hii Mfumo utaichukua kwa <strong>'Kg'</strong> kama ilivyo.</p>
+                <div class="example">
+                    <strong>Mfano:</strong> Ukiweka '5' Mfumo utachukua <strong>5Kg</strong>.
+                </div>
+
+                <h4>ii. Gramu (g)</h4>
+                <p>Hii itachukua bidhaa husika kwa <strong>g</strong>. Ukichagua hapa itatokea sehemu ya kuweka idadi yenye neno <strong>"Weka idadi ya g ulivyonavyo"</strong>.</p>
+                <div class="example">
+                    <strong>Mfano:</strong> Ukiweka '5' Mfumo utachukua <strong>5g</strong>.
+                </div>
+
+                <h4>iii. Kiroba (5Kg)</h4>
+                <p>Hii itachukua bidhaa husika kwa idadi ya viroba vya <strong>5Kg</strong>. Ukiweka idadi, Mfumo utaichukua na <strong>kuizidisha kwa '5'</strong> ili kupata kiwango halisi cha Kg, lakini pia utachukua idadi husika na kuihifadhi ili kutambua idadi ya vifurushi.</p>
+                <div class="example">
+                    <strong>Mfano:</strong> Ukiweka '10' Mfumo utapata kiwango cha jumla cha <strong>50Kg</strong> na pia kutambua kwamba umeweka <strong>viroba kumi</strong>.
+                </div>
+
+                <h4>iv. Kiroba (10Kg)</h4>
+                <p>Hii itachukua bidhaa husika kwa idadi ya viroba vya <strong>10Kg</strong>. Ukiweka idadi, Mfumo utaizidisha kwa <strong>'10'</strong> ili kupata kiwango halisi cha Kg.</p>
+                <div class="example">
+                    <strong>Mfano:</strong> Ukiweka '5' Mfumo utapata kiwango cha jumla cha <strong>50Kg</strong> na pia kutambua kwamba umeweka <strong>viroba vitano</strong>.
+                </div>
+
+                <h4>v. Kiroba (25Kg)</h4>
+                <p>Hii itachukua bidhaa husika kwa idadi ya viroba vya <strong>25Kg</strong>. Ukiweka idadi, Mfumo utaizidisha kwa <strong>'25'</strong> ili kupata kiwango halisi cha Kg.</p>
+                <div class="example">
+                    <strong>Mfano:</strong> Ukiweka '5' Mfumo utapata kiwango cha jumla cha <strong>125Kg</strong> na pia kutambua kwamba umeweka <strong>viroba vitano</strong>.
+                </div>
+
+                <h4>vi. Kiroba (50Kg)</h4>
+                <p>Hii itachukua bidhaa husika kwa idadi ya viroba vya <strong>50Kg</strong>. Ukiweka idadi, Mfumo utaizidisha kwa <strong>'50'</strong> ili kupata kiwango halisi cha Kg.</p>
+                <div class="example">
+                    <strong>Mfano:</strong> Ukiweka '5' Mfumo utapata kiwango cha jumla cha <strong>250Kg</strong> na pia kutambua kwamba umeweka <strong>viroba vitano</strong>.
+                </div>
+
+                <h4>vii. Gunia (100Kg)</h4>
+                <p>Hii itachukua bidhaa husika kwa idadi ya gunia la <strong>100Kg</strong>. Ukiweka idadi, Mfumo utaizidisha kwa <strong>'100'</strong> ili kupata kiwango halisi cha Kg.</p>
+                <div class="example">
+                    <strong>Mfano:</strong> Ukiweka '5' Mfumo utapata kiwango cha jumla cha <strong>500Kg</strong> na pia kutambua kwamba umeweka <strong>gunia tano</strong>.
+                </div>
+
+                <h4>viii. Tani (1000Kg)</h4>
+                <p>Hii itachukua bidhaa husika kwa idadi ya tani ya <strong>1000Kg</strong>. Ukiweka idadi, Mfumo utaizidisha kwa <strong>'1000'</strong> ili kupata kiwango halisi cha Kg.</p>
+                <div class="example">
+                    <strong>Mfano:</strong> Ukiweka '5' Mfumo utapata kiwango cha jumla cha <strong>5000Kg</strong> na pia kutambua kwamba umeweka <strong>tani tano</strong>.
+                </div>
+            </div>
+
+            <!-- ===== SECTION: MAELEZO ===== -->
+            <div class="section" id="maelezo">
+                <h2><span class="num">4</span> Maelezo & Tarehe ya Mwisho</h2>
+                <h3>Maelezo ya (Hiari)</h3>
+                <p>
+                    Baada ya kuweka idadi ya bidhaa husika, panafata sehemu ya <strong>'Maelezo ya (Hiari)'</strong> ambapo
+                    hapa unaweza kuandika taarifa za ziada kuhusu bidhaa zako. Baada ya kuhifadhi zitaonekana kwenye
+                    <strong>Dashboard</strong> kwa bidhaa husika. Kipengele hiki <strong>si lazima</strong> kujaza.
+                </p>
+                <div class="example">
+                    <strong>Mfano:</strong> Unaweza kuandika 'Mchele Supa kutoka Mbeya'.
+                </div>
+
+                <h3>Tarehe ya Mwisho (Hiari)</h3>
+                <p>
+                    Kitafata kipengele cha <strong>'Tarehe ya Mwisho (Hiari)'</strong> ambapo hapa utaweza kuweka tarehe
+                    ambayo bidhaa husika ita-expire. Baada ya kuhifadhi, Mfumo utakukumbusha ikiwa bidhaa husika itakaribia
+                    ku-expire kulingana na tarehe uliyoiweka. Kipengele hiki <strong>si lazima</strong> kukijaza pia.
+                </p>
+            </div>
+
+            <!-- ===== SECTION: BEI ===== -->
+            <div class="section" id="bei">
+                <h2><span class="num">5</span> Taarifa za Bei</h2>
+                <p>
+                    Kitafata kipengele cha <strong>'Taarifa za Bei'</strong>. Hapa utaweka taarifa za kununua na kuuza
+                    kwa bidhaa husika kama ifuatavyo:
+                </p>
+
+                <h3>A. Bei ya Kununua</h3>
+
+                <h4>A, i. Jumla</h4>
+                <p>
+                    Hapa utaingiza bei ya kununua kwa <strong>Jumla</strong> ya kiwango chote cha bidhaa husika ikiwa
+                    hutaki kuingiza bei hiyo kwa kipimo kimoja cha bidhaa husika kupitia batani ya <strong>'Kipimo'</strong>
+                    iliyopo kulia kwake.
+                </p>
+                <div class="example">
+                    <strong>Mfano (Kilogramu (Kg)):</strong><br>
+                    Zimewekwa 5Kg, kisha hapa ukaweka bei; <strong>5,000/=</strong>, Mfumo utaichukua kama bei ya
+                    <strong>'Jumla'</strong> kwa 5Kg zote na kuweza kutambua bei kwa Kilo moja automatically ambayo itakua
+                    <strong>1,000/=</strong>.
+                </div>
+                <div class="example">
+                    <strong>Mfano (Gramu (g)):</strong><br>
+                    Zimewekwa 5000g, kisha hapa ukaweka bei; <strong>5,000/=</strong>, Mfumo utaichukua kama bei ya
+                    <strong>'Jumla'</strong> kwa 5000g zote na kuweza kutambua bei kwa Gramu moja automatically ambayo itakua
+                    <strong>1/=</strong>.
+                </div>
+                <div class="example">
+                    <strong>Mfano (Kiroba (10Kg)):</strong><br>
+                    Vimewekwa viroba viwili vya kilo kumi, kisha hapa ukaweka <strong>2,000/=</strong>, Mfumo utaichukua kama
+                    bei ya <strong>'Jumla'</strong> kwa viroba vyote viwili na kuweza kutambua bei kwa Kiroba kimoja
+                    automatically ambayo itakua <strong>1,000/=</strong>.
+                </div>
+
+                <h4>A, ii. Kipimo</h4>
+                <p>
+                    Hapa utaingiza bei ya kununua kwa <strong>kipimo kimoja</strong> cha bidhaa husika ikiwa hutaki kuingiza
+                    bei hiyo kwa Jumla yote ya bidhaa husika kupitia batani ya <strong>'Jumla'</strong> iliyopo kushoto kwake.
+                </p>
+                <div class="example">
+                    <strong>Mfano (Kilogramu (Kg)):</strong><br>
+                    Zimewekwa 5Kg, kisha hapa ukaweka bei; <strong>1,000/=</strong>, Mfumo utaichukua kama bei ya
+                    <strong>'Kipimo'</strong> kwa Kilo moja na kuweza kutambua bei ya jumla kwa 5Kg zote automatically
+                    ambayo itakua <strong>5,000/=</strong>.
+                </div>
+                <div class="example">
+                    <strong>Mfano (Kiroba (10Kg)):</strong><br>
+                    Vimewekwa viroba viwili vya kilo kumi, kisha hapa ukaweka <strong>1,000/=</strong>, Mfumo utaichukua kama
+                    bei ya <strong>'Kipimo'</strong> kwa Kiroba kimoja na kuweza kutambua bei kwa viroba vyote viwili
+                    automatically ambayo itakua <strong>2,000/=</strong>.
+                </div>
+
+                <h3>B. Bei ya Kuuza</h3>
+
+                <h4>B, i. Kipimo</h4>
+                <p>
+                    Hapa utaingiza bei ya kuuza kwa <strong>kipimo kimoja</strong> cha bidhaa husika ikiwa hutaki kuingiza
+                    bei hiyo kwa Jumla yote ya bidhaa husika kupitia batani ya <strong>'Jumla'</strong> iliyopo kulia kwake.
+                </p>
+                <div class="example">
+                    <strong>Mfano (Kilogramu (Kg)):</strong><br>
+                    Zimewekwa 5Kg, kisha hapa ukaweka bei; <strong>2,000/=</strong>, Mfumo utaichukua kama bei ya
+                    <strong>'Kipimo'</strong> kwa Kilo moja na kuweza kutambua bei ya jumla kwa 5Kg zote automatically
+                    ambayo itakua <strong>10,000/=</strong>.
+                </div>
+                <div class="example">
+                    <strong>Mfano (Kiroba (10Kg)):</strong><br>
+                    Vimewekwa viroba viwili vya kilo kumi, kisha hapa ukaweka <strong>2,000/=</strong>, Mfumo utaichukua kama
+                    bei ya <strong>'Kipimo'</strong> kwa Kiroba kimoja na kuweza kutambua bei kwa viroba vyote viwili
+                    automatically ambayo itakua <strong>4,000/=</strong>.
+                </div>
+
+                <h4>B, ii. Jumla</h4>
+                <p>
+                    Hapa utaingiza bei ya kuuza kwa <strong>Jumla</strong> ya kiwango chote cha bidhaa husika ikiwa hutaki
+                    kuingiza bei hiyo kwa kipimo kimoja cha bidhaa husika kupitia batani ya <strong>'Kipimo'</strong>
+                    iliyopo kushoto kwake.
+                </p>
+                <div class="example">
+                    <strong>Mfano (Kilogramu (Kg)):</strong><br>
+                    Zimewekwa 5Kg, kisha hapa ukaweka bei; <strong>10,000/=</strong>, Mfumo utaichukua kama bei ya
+                    <strong>'Jumla'</strong> kwa 5Kg zote na kuweza kutambua bei kwa Kilo moja automatically ambayo itakua
+                    <strong>2,000/=</strong>.
+                </div>
+                <div class="example">
+                    <strong>Mfano (Kiroba (10Kg)):</strong><br>
+                    Vimewekwa viroba viwili vya kilo kumi, kisha hapa ukaweka <strong>4,000/=</strong>, Mfumo utaichukua kama
+                    bei ya <strong>'Jumla'</strong> kwa viroba vyote viwili na kuweza kutambua bei kwa Kiroba kimoja
+                    automatically ambayo itakua <strong>2,000/=</strong>.
+                </div>
+
+                <div class="note">
+                    <strong>NB:</strong> Bei ya kuuza ni lazima iwe <strong>kubwa kuliko</strong> ya kununua ili Mfumo uweze
+                    kukujulisha namna mauzo yako yanavyokwenda ikiwa ni kwa <strong>Faida</strong> au kwa <strong>Hasara</strong>.
+                </div>
+            </div>
+
+            <!-- ===== SECTION: TAARIFA ZAIDI ===== -->
+            <div class="section" id="taarifa-zaidi">
+                <h2><span class="num">6</span> Taarifa za Ziada</h2>
+                <p>
+                    Baada ya kuweka taarifa za bei ya kuuza na kununua, itakuja sehemu ya <strong>'Taarifa za ziada'</strong>
+                    ambapo ukipabonyeza zitakuja taarifa za Bei ya <strong>kununua</strong>, <strong>kuuza</strong> na
+                    <strong>faida</strong> kwa <strong>1Kg</strong> na <strong>1g</strong> ambazo hizi Mfumo utazitumia
+                    kukuonesha ikiwa mauzo yako yanafanyika kwa <strong>Faida</strong> au kwa <strong>Hasara</strong>.
+                </p>
+                <p>
+                    Pia itaoneshwa <strong>Faida ya Jumla</strong> inayotarajiwa kupatikana baada ya mauzo yote ya bidhaa
+                    husika kufanyika kulingana na bei ya kuuza na kununua ulizoweka.
+                </p>
+            </div>
+
+            <!-- ===== SECTION: HIFADHI ===== -->
+            <div class="section" id="hifadhi">
+                <h2><span class="num">7</span> Kuhifadhi Bidhaa</h2>
+                <p>
+                    Ukimaliza kujaza na kuhakiki taarifa za bidhaa husika kikamilifu, utabonyeza <strong>'Hifadhi Bidhaa'</strong>
+                    ili bidhaa ihifadhiwe kikamilifu kwenye Mfumo na utaweza kukutana nayo kwenye pages za msingi kama
+                    <strong>Dashboard</strong> na <strong>Mauzo</strong> ili kuendelea na taratibu nyinginezo za kimauzo.
+                </p>
+            </div>
+
+            <!-- ===== SECTION: DASHBOARD ===== -->
+            <div class="section" id="dashboard">
+                <h2><span class="num">8</span> Dashboard ya Nafaka</h2>
+                <p>
+                    Page ya <strong>Dashboard</strong> ni mahali unapoona bidhaa zako zote zilizohifadhiwa. Hapa unaweza
+                    kuona taarifa za msingi za bidhaa, kuzihariri, kuzifuta, au kuzijazilia.
+                </p>
+
+                <h3 id="kuona">A. Kuona Taarifa Zote za Bidhaa</h3>
+                <p>
+                    Ili uweze kuona taarifa zote kuhusu bidhaa kama zilivyohifadhiwa, utabonyeza bidhaa husika ambapo
+                    itatokea sehemu itayokuonesha taarifa zote za msingi za bidhaa hiyo kama ulivyozihifadhi kama vile;
+                    <strong>idadi</strong>, bei za <strong>kuuza</strong> na <strong>kununua</strong> na <strong>faida</strong>.
+                </p>
+                <p>
+                    Kwenye page hii bidhaa zilizohifadhiwa kwa vifurushi huwa na <strong class="purple">mstari wa zambarau</strong>
+                    unaoonesha kifurushi husika bidhaa ilichohifadhiwa nacho isipokuwa bidhaa zilizohifadhiwa moja kwa moja
+                    kwa <strong>'Kg'</strong> au <strong>'g'</strong> hizi hazitakua na mstari wowote.
+                </p>
+                <div class="example">
+                    <strong>Mfano:</strong> Kwa bidhaa iliyohifadhiwa kwa kiroba cha kilo kumi (<strong>Kiroba (10Kg)</strong>)
+                    itaonekana na mstari huu; <strong class="purple">Imehifadhiwa kwa: Kiroba (10 Kg)</strong>.
+                </div>
+                <p>
+                    Kwenye sehemu hii pia zipo batani mbili; <strong>'Hariri'</strong> na <strong class="red">'Futa'</strong>
+                    itayofuta kabisa taarifa za bidhaa husika kwenye Mfumo ikibonyezwa baada ya uthibitisho.
+                </p>
+
+                <h3 id="kuhariri">B. Kuhariri Taarifa za Bidhaa</h3>
+                <p>
+                    Ili uweze kuhariri taarifa kuhusu bidhaa, utabonyeza icon ndogo ya <strong>vidoti vitatu</strong> iliyopo
+                    kuliani mwa mstari wa bidhaa husika, ambapo itatokea sehemu ya kuhariri yenye vipengele vifuatavyo:
+                </p>
+                <ol>
+                    <li><strong>'Jina la Bidhaa *'</strong>: hapa utahariri Jina.</li>
+                    <li><strong>'Maelezo (Hiari)'</strong>: hapa utahariri maelezo ya hiari kuhusu bidhaa yako.</li>
+                    <li>
+                        <strong>'Idadi'</strong> — hapa utahariri idadi kwa bidhaa yako, ambapo:
+                        <ul>
+                            <li>
+                                <strong>a.</strong> Ikiwa uliingiza kwa <strong>'Kilogramu (Kg)'</strong> ama <strong>'Gramu (g)'</strong>:
+                                utaweka idadi halisi unayoitaka na Mfumo utaichukua kama ilivyo utapohifadhi.
+                                <div class="example">
+                                    <strong>Mfano:</strong> Mwanzo ilikuwa ni '4'Kg ukaweka '6'Kg. Mfumo utachukua <strong>6Kg</strong> baada ya kuhifadhi.
+                                </div>
+                            </li>
+                            <li>
+                                <strong>b.</strong> Ikiwa uliingiza kwa vifurushi (<strong>Kiroba (5Kg)</strong>, <strong>Kiroba (10Kg)</strong>, <strong>Kiroba (25Kg)</strong>, <strong>Kiroba (50Kg)</strong>, <strong>Gunia (100Kg)</strong>, <strong>Tani (1000Kg)</strong>),
+                                sehemu ya idadi itakuwa na vipengele viwili:
+                                <ul>
+                                    <li>
+                                        <strong>i. 'Idadi (Jina la kifurushi husika) *'</strong> — utaweka idadi halisi ya jumla unayoitaka kwa kifurushi husika.
+                                        <div class="example">
+                                            <strong>Mfano:</strong> Uliingiza viroba viwili vya kilo kumi (<strong>Kiroba (10Kg)</strong>) ikimaanisha jumla ya kilo ni 20Kg, ukabadilisha kuwa '30'Kg. Mfumo utachukua <strong>30Kg</strong> na kutambua idadi ni <strong>viroba vitatu</strong> vya kilo kumi.
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <strong>ii. 'Idadi ya Vifurushi (Jina la kifurushi husika)'</strong> — utaweka idadi ya vifurushi husika.
+                                        <div class="example">
+                                            <strong>Mfano:</strong> Uliingiza viroba viwili vya kilo kumi, ukabadilisha kuwa '3'. Mfumo utachukua idadi ya viroba ni <strong>vitatu</strong> na kutambua jumla ya kilo ni <strong>30Kg</strong>.
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>'Bei ya Kununua *'</strong> — hapa utahariri bei ya kununua kwa namna kama ilivyoelekezwa kwenye Taarifa za Bei.</li>
+                    <li><strong>'Bei ya Kuuza *'</strong> — hapa utahariri bei ya kuuza kwa namna kama ilivyoelekezwa kwenye Taarifa za Bei.</li>
+                    <li>Taarifa kwa ufupi kuhusu bei za jumla za <strong>kuuza</strong> na <strong>kununua</strong> na <strong>faida</strong> ya jumla zitazohifadhiwa kwenye Mfumo kulingana na namna ulivyohariri bei.</li>
+                    <li>Baada ya kujiridhisha ukamilifu wa taarifa ulizohariri, bonyeza <strong>'Hifadhi'</strong> ili zihifadhiwe, ikiwa umeghairi bonyeza <strong>'Ghairi'</strong>.</li>
+                </ol>
+                <div class="note">
+                    <strong>NB:</strong> Bei ya kuuza ni lazima iwe <strong>kubwa kuliko</strong> ya kununua ili Mfumo uweze
+                    kukujulisha namna mauzo yako yanavyokwenda ikiwa ni kwa <strong>Faida</strong> au kwa <strong>Hasara</strong>.
+                </div>
+
+                <h3 id="kujazilia">C. Kujazilia Kiwango Kilichopo cha Bidhaa</h3>
+                <p>
+                    Ili uweze kujazilia bidhaa, utabonyeza icon ya <strong>vidoti vitatu</strong> iliyopo kulia mwishoni mwa
+                    mstari wa bidhaa husika na kubonyeza <strong>'Jazilia'</strong> ili ije sehemu ya uwanja wa kujazilia.
+                    Ujaziliaji unatofautiana kulingana na asili ya bidhaa husika kama ifuatavyo:
+                </p>
+                <ol>
+                    <li>
+                        <strong>Kwa bidhaa iliyohifadhiwa kwa 'Kilogramu (Kg)' ama 'Gramu (g)':</strong>
+                        unaweza kuijazilia kwa <strong>'Kg'</strong> ama kwa <strong>'g'</strong> na Mfumo utaweza kutambua
+                        kiwango husika kilichojaziliwa.
+                        <div class="example">
+                            <strong>Mfano:</strong> Kwa bidhaa ya 'Kilogramu (Kg)' kabla kiasi kilikua 6Kg, ukajazilia '4'Kg kwa 'Kg' ama '4000'g kwa 'g', Mfumo utatambua kuwa zimeongezwa kilo nne na hivyo jumla mpya itakua <strong>10Kg</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Kwa bidhaa iliyohifadhiwa kwa vifurushi:</strong> unaweza kuijazilia kwa:
+                        <ul>
+                            <li>
+                                <strong>Idadi ya vifurushi:</strong> utaweka idadi ya vifurushi unayotaka kujazilia.
+                                <div class="example">
+                                    <strong>Mfano:</strong> Kwa viroba vya kilo kumi kabla vilikua viwili (20Kg), ukajazilia kimoja ('1'), Mfumo utatambua idadi mpya itakua ni viroba <strong>vitatu</strong> (30Kg).
+                                </div>
+                            </li>
+                            <li>
+                                <strong>'Kg':</strong> utaweka kiasi cha kilo unachotaka kujazilia.
+                                <div class="example">
+                                    <strong>Mfano:</strong> Kwa Kiroba cha kilo kumi, kabla zilikua 15Kg (kiroba kimoja na kilo tano), ukaongeza '5'Kg, Mfumo utatambua idadi mpya ni <strong>20Kg</strong> na sasa viroba ni <strong>viwili</strong>.
+                                </div>
+                            </li>
+                            <li>
+                                <strong>'g':</strong> utaweka kiasi cha gramu unachotaka kujazilia (kwa namna ile ile kama ya 'Kg').
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Baada ya kujazilia kiwango unachotaka, utabonyeza <strong>'Hifadhi'</strong> idadi mpya itahifadhiwa ama <strong>'Ghairi'</strong> kughairi.</li>
+                </ol>
+                <div class="note">
+                    <strong>NB:</strong> Mabadiliko haya ya idadi kwenye kujazilia <strong>hayatabadili</strong> bei za kuuza
+                    na kununua kwa kipimo (kwa kiroba kimoja ama kilo moja). Yatabadili bei za jumla za kuuza na kununua
+                    kulingana na kiwango kilichoongezwa.
+                </div>
+            </div>
+
+            <!-- ===== SECTION: MAUZO ===== -->
+            <div class="section" id="mauzo">
+                <h2><span class="num">9</span> Page ya Mauzo</h2>
+                <p>
+                    Page hii inatumika kurekodi taarifa na mwenendo mzima wa mauzo unayoyafanya. Kupitia page hii Mfumo
+                    utaweza kukujulisha ikiwa mauzo yanafanyika kwa <strong>Faida</strong> ama <strong>Hasara</strong> na
+                    ikiwa mauzo <strong>yanapanda</strong> ama <strong>yanashuka</strong>. Zifuatazo ni sehemu za msingi za page hii:
+                </p>
+            </div>
+
+            <!-- ===== SECTION: REKODI MAUZO ===== -->
+            <div class="section" id="rekodi-mauzo">
+                <h2><span class="num">10</span> Rekodi Mauzo</h2>
+                <p>
+                    Sehemu hii ndipo utapochagua bidhaa unayotaka kuuza na kuweka idadi na bei ili Mfumo ukupe taarifa kwa
+                    ufupi kuhusu mauzo yako kabla hujarekodi. Ina vipengele:
+                </p>
+                <ul>
+                    <li>
+                        <strong>i. 'Chagua Bidhaa':</strong> Hapa utachagua bidhaa unayotaka kurekodi mauzo yake. Ukibonyeza
+                        itakuja list ya bidhaa zote zilizopo kwenye Mfumo ambapo bidhaa zilizohifadhiwa kwa vifurushi huwa na
+                        <strong class="purple">mstari wa zambarau</strong> unaoonesha kifurushi husika bidhaa ilichohifadhiwa nacho.
+                        <div class="example">
+                            <strong>Mfano:</strong> Kwa bidhaa iliyohifadhiwa kwa kiroba cha kilo kumi (<strong>Kiroba (10Kg)</strong>) itaonekana na mstari huu; <strong class="purple">Imehifadhiwa kwa: Kiroba (10 Kg)</strong>.
+                        </div>
+                    </li>
+                    <li><strong>ii. 'Idadi':</strong> Hapa utajaza kiwango unachotaka kuuza kwa bidhaa uliyochagua.</li>
+                    <li>
+                        <strong>iii. 'Bei ya Kuuza':</strong> Hapa utaweka bei ya kuuza kwa kiwango husika unachotaka kuuza.
+                        Kabla ya kujaza, Mfumo huleta bei ya kuuza automatically katika kipengele hiki kulingana na namna
+                        ulivyoihifadhi kwenye form page ama ulivyohariri kwenye Dashboard page kwa bidhaa husika.
+                    </li>
+                </ul>
+                <p>Baada ya kuweka <strong>idadi</strong> na <strong>bei ya kuuza</strong>, zitatokea sehemu zifuatazo zitoazo taarifa kwa ufupi kabla hujarekodi mauzo:</p>
+                <ul>
+                    <li><strong>iv. 'Jumla ya Mauzo':</strong> Hapa pataonesha kiasi cha pesa cha jumla kitachopatikana baada ya mauzo kulingana na bei ya kuuza na idadi iliyowekwa.</li>
+                    <li><strong>v. 'Faida inayotarajiwa':</strong> Hapa pataonesha faida inayotarajiwa baada ya mauzo kulingana na bei ya kuuza na ya kununua zilizopo kwenye Mfumo.</li>
+                    <li><strong>vi. 'Faida Halisi':</strong> Hapa pataonesha faida halisi itayopatikana baada ya mauzo kulingana na bei ya kuuza uliyoweka na ya kununua iliyopo kwenye Mfumo.</li>
+                    <li><strong>vii. 'Rekodi Mauzo':</strong> Hapa utabonyeza ili Mfumo urekodi mauzo kulingana na taarifa ulizojaza baada ya kuhakikisha zipo sawa.</li>
+                </ul>
+            </div>
+
+            <!-- ===== SECTION: MWENENDO ===== -->
+            <div class="section" id="mwenendo">
+                <h2><span class="num">11</span> Mwenendo wa Mauzo</h2>
+                <p>
+                    Sehemu hii hutokea chati inayoonesha ukuaji wa mauzo kulingana na kiwango cha mauzo unachofanya kila
+                    siku. Chati hii ndio itayokujulisha ikiwa mauzo yanapanda ama yanashuka kupitia muunganiko na sizes za
+                    Glows kama ifuatavyo:
+                </p>
+                <ul>
+                    <li><strong>i. 'Glow':</strong> Ni mstari wima mmoja unaowakilisha mauzo kwa siku.</li>
+                    <li><strong>ii. 'Glow Ndefu':</strong> Inamaanisha mauzo mengi kwa siku.</li>
+                    <li><strong>iii. 'Glow Fupi':</strong> Inamaanisha mauzo machache kwa siku.</li>
+                    <li><strong>iv. 'Curve':</strong> Mstari unaounganisha Glow moja na nyingine.</li>
+                    <li><strong>v. 'Curve ikipanda':</strong> Inamaanisha mauzo yanapanda kutoka siku moja na nyingine.</li>
+                    <li><strong>vi. 'Curve ikishuka':</strong> Inamaanisha mauzo yanashuka kutoka siku moja na nyingine.</li>
+                </ul>
+            </div>
+
+            <!-- ===== SECTION: HISTORIA ===== -->
+            <div class="section" id="historia">
+                <h2><span class="num">12</span> Historia ya Mauzo</h2>
+                <p>
+                    Hapa zinakaa rekodi za taarifa za mauzo zikionesha; <strong>Jina la Bidhaa</strong>, <strong>Muda</strong>,
+                    <strong>tarehe</strong>, <strong>kiwango kilichouzwa</strong> na <strong>Faida</strong> au
+                    <strong>Hasara</strong> iliyopatikana.
+                </p>
+                <p>
+                    Ukitaka kufuta historia ya mauzo fulani, bonyeza kwa muda kidogo mstari wa bidhaa husika
+                    (<strong>long press</strong>), itakuja sehemu itayotaka uthibitisho wa kufuta unapoweza kufuta ama kughairi.
+                </p>
+                <div class="note">
+                    <strong>NB:</strong> Ufutaji utaondoa taarifa zote za mauzo ya bidhaa husika.
+                </div>
+            </div>
+
+            <!-- ===== SECTION: NAMNA YA KUREKODI MAUZO ===== -->
+            <div class="section" id="namna-mauzo">
+                <h2><span class="num">13</span> Namna ya Kurekodi Mauzo</h2>
+                <p>
+                    Kila bidhaa ina namna yake ya kurekodi mauzo kulingana na asili yake kama ifuatavyo:
+                </p>
+
+                <h3>1. Mauzo ya Bidhaa ya 'Kilogramu (Kg)'</h3>
+                <p>Unaweza <strong>kuuza kwa</strong>:</p>
+                <ul>
+                    <li>
+                        <strong>i. 'Kg':</strong> Hapa unauza kwa Kilo. Utaweka <strong>idadi</strong> ya kilo unazotaka kuuza na
+                        <strong>bei ya kuuza kwa Kilo moja</strong> kisha Mfumo utakujulisha <strong>Jumla ya Mauzo</strong> na
+                        <strong>Faida</strong> ama <strong>Hasara</strong>.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza Kilo tano, utaweka '5' sehemu ya <strong>idadi</strong>. Bei ya kununua kwa kilo ni 100/= na ya kuuza kwa kilo ni 200/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>500/=</strong> na <strong>Jumla ya Mauzo</strong> itakua <strong>1,000/=</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>ii. 'Jumla':</strong> Hapa unauza kwa Jumla. Utaweka <strong>Jumla ya idadi</strong> ya kilo unazotaka kuuza na <strong>Bei ya kuuza ya Jumla</strong> kwa zote.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza Kilo Kumi kwa Jumla, utaweka '10' sehemu ya <strong>idadi</strong>. Bei ya kununua kwa jumla ya zote ni 1,000/= na ya kuuza kwa Jumla ni 2,000/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>1,000/=</strong> na <strong>Jumla ya Mauzo</strong> itakua <strong>2,000/=</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>iii. 'g':</strong> Hapa unauza kwa Gramu. Utaweka <strong>idadi</strong> ya Gramu unazotaka kuuza na <strong>Bei ya kuuza kwa Gramu moja</strong>.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza Gramu elfu tano, utaweka '5000' sehemu ya <strong>idadi</strong>. Bei ya kununua kwa Gramu ni 0.1/= na ya kuuza kwa Gramu ni 0.2/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>500/=</strong> na <strong>Jumla ya Mauzo</strong> itakua <strong>1,000/=</strong>.
+                        </div>
+                    </li>
+                </ul>
+
+                <h3>2. Mauzo ya Bidhaa ya Kifurushi</h3>
+                <p>Unaweza <strong>kuuza kwa</strong>:</p>
+                <h4>a. 'Kifurushi'</h4>
+                <p>Hapa unauza kwa kuzingatia ujazo wa kifurushi cha bidhaa husika kama ulivyoihifadhi kwenye form page. Uuzaji hapa upo wa namna mbili:</p>
+                <ul>
+                    <li>
+                        <strong>i. 'Kipimo':</strong> Mauzo yanafanyika kwa kuzingatia bei ya kununua na kuuza kwa kifurushi kimoja (Reja reja).
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza Kiroba Kimoja cha kilo kumi kati ya viwili vilivyopo. Utaweka '1' sehemu ya <strong>idadi</strong>. Bei ya kununua kwa kiroba kimoja ni 1,000/= na kuuza kwa kiroba kimoja ni 2,000/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>1,000/=</strong> na <strong>Jumla ya Mauzo</strong> itakua <strong>2,000/=</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>ii. 'Jumla':</strong> Mauzo yanafanyika kwa kuzingatia bei ya kununua na kuuza kwa jumla ya vifurushi.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza Viroba viwili vya Kilo Kumi kwa Jumla, utaweka '2' sehemu ya <strong>idadi</strong>. Bei ya kununua kwa Jumla ya vyote ni 2,000/= na ya kuuza kwa Jumla ni 4,000/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>2,000/=</strong> na <strong>Jumla ya Mauzo</strong> itakua <strong>4,000/=</strong>.
+                        </div>
+                    </li>
+                </ul>
+
+                <h4>b. 'Kg'</h4>
+                <p>Hapa unauza kwa kilo kadhaa kutoka kwenye kifurushi ama vifurushi vya bidhaa husika. Uuzaji hapa upo wa namna mbili:</p>
+                <ul>
+                    <li>
+                        <strong>i. 'Kipimo':</strong> Mauzo yanafanyika kwa kuzingatia bei ya kununua na kuuza kwa kilo moja (Reja reja).
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza kilo tano kutoka kwenye Kiroba cha kilo kumi. Utaweka '5' sehemu ya <strong>idadi</strong>. Bei ya kununua kwa Kilo moja ni 100/= na kuuza kwa Kilo moja ni 200/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>500/=</strong> na <strong>Jumla ya Mauzo</strong> itakua <strong>1,000/=</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>ii. 'Jumla':</strong> Mauzo yanafanyika kwa kuzingatia bei ya kununua na kuuza kwa jumla ya Kilo.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza kilo 20 kutoka kwenye Viroba viwili vya Kilo Kumi kwa Jumla, utaweka '20' sehemu ya <strong>idadi</strong>. Bei ya kununua kwa Jumla ya zote ni 2,000/= na ya kuuza kwa Jumla ni 4,000/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>2,000/=</strong> na <strong>Jumla ya Mauzo</strong> itakua <strong>4,000/=</strong>.
+                        </div>
+                    </li>
+                </ul>
+
+                <h4>c. 'g'</h4>
+                <p>Hapa unauza kwa Gramu kadhaa kutoka kwenye kifurushi ama vifurushi vya bidhaa husika.</p>
+                <div class="example">
+                    <strong>Mfano:</strong> Unauza Gramu 5,000 kutoka kwenye Kiroba cha kilo kumi. Utaweka '5000' sehemu ya <strong>idadi</strong>. Bei ya kununua kwa Gramu moja ni 0.1/= na kuuza kwa Gramu moja ni 0.2/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>500/=</strong> na <strong>Jumla ya Mauzo</strong> itakua <strong>1,000/=</strong>.
+                </div>
+
+                <h3>3. Mauzo ya Bidhaa ya 'Gramu (g)'</h3>
+                <p>Unaweza <strong>kuuza kwa</strong>:</p>
+                <ul>
+                    <li>
+                        <strong>i. 'g':</strong> Hapa unauza kwa Gramu. Utaweka <strong>idadi</strong> ya Gramu unazotaka kuuza na <strong>Bei ya kuuza kwa Gramu moja</strong>.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza Gramu 5,000, utaweka '5000' sehemu ya <strong>idadi</strong>. Bei ya kununua kwa Gramu ni 0.1/= na ya kuuza kwa Gramu ni 0.2/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>500/=</strong> na <strong>Jumla ya Mauzo</strong> itakua <strong>1,000/=</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>ii. 'Jumla':</strong> Hapa unauza kwa Jumla. Utaweka <strong>Jumla ya idadi</strong> ya Gramu unazotaka kuuza na <strong>Bei ya kuuza ya Jumla</strong> kwa zote.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza Gramu 10,000 kwa Jumla, utaweka '10000' sehemu ya <strong>idadi</strong>. Bei ya kununua kwa Jumla ya zote ni 1,000/= na ya kuuza kwa Jumla ni 2,000/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>1,000/=</strong> na <strong>Jumla ya Mauzo</strong> itakua <strong>2,000/=</strong>.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="footer">
+                <p>
+                    &copy; 2026 <strong>Angaza</strong> - Mwanga wa Biashara Yako
+                </p>
+                <p style="margin-top: 5px;">
+                    <a href="index.html">Sera ya Faragha</a> •
+                    <a href="terms-of-service.html">Masharti ya Matumizi</a> •
+                    <a href="#contact">Wasiliana Nasi</a>
+                </p>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ===== JAVASCRIPT: SEARCH + SCROLL SPY ===== -->
+    <script>
+        (function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchBox = document.getElementById('searchBox');
+            const clearBtn = document.getElementById('clearBtn');
+            const searchInfo = document.getElementById('searchInfo');
+            const noResults = document.getElementById('noResults');
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('#sidebarNav a');
+
+            let originalContent = new Map();
+
+            // ===== HIFADHI CONTENT YA AWALI =====
+            sections.forEach(section => {
+                originalContent.set(section, section.innerHTML);
+            });
+
+            // ===== SEARCH FUNCTIONALITY =====
+            function performSearch(query) {
+                const q = query.trim().toLowerCase();
+
+                // ===== RESET =====
+                if (!q) {
+                    sections.forEach(section => {
+                        section.innerHTML = originalContent.get(section);
+                        section.style.display = '';
+                    });
+                    noResults.classList.remove('visible');
+                    searchInfo.classList.remove('visible');
+                    searchBox.classList.remove('has-text');
+                    return;
+                }
+
+                searchBox.classList.add('has-text');
+
+                let totalMatches = 0;
+                let visibleSections = 0;
+
+                sections.forEach(section => {
+                    // ===== RESTORE ORIGINAL KWANZA =====
+                    section.innerHTML = originalContent.get(section);
+
+                    // ===== TAFUTA MATCH =====
+                    const text = section.textContent.toLowerCase();
+                    const hasMatch = text.includes(q);
+
+                    if (hasMatch) {
+                        // ===== HIGHLIGHT =====
+                        highlightText(section, q);
+                        section.style.display = '';
+                        visibleSections++;
+                        totalMatches += (text.split(q).length - 1);
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+
+                // ===== UPDATE INFO =====
+                if (visibleSections === 0) {
+                    noResults.classList.add('visible');
+                    searchInfo.classList.remove('visible');
+                } else {
+                    noResults.classList.remove('visible');
+                    searchInfo.textContent = `📊 Matokeo: ${totalMatches} kwenye sehemu ${visibleSections}`;
+                    searchInfo.classList.add('visible');
+                }
+            }
+
+            // ===== HIGHLIGHT TEXT =====
+            function highlightText(element, query) {
+                const walker = document.createTreeWalker(
+                    element,
+                    NodeFilter.SHOW_TEXT,
+                    null,
+                    false
+                );
+
+                const textNodes = [];
+                let node;
+                while (node = walker.nextNode()) {
+                    if (node.nodeValue.toLowerCase().includes(query)) {
+                        textNodes.push(node);
+                    }
+                }
+
+                textNodes.forEach(textNode => {
+                    const text = textNode.nodeValue;
+                    const lowerText = text.toLowerCase();
+                    const fragment = document.createDocumentFragment();
+                    let lastIndex = 0;
+                    let index;
+
+                    while ((index = lowerText.indexOf(query, lastIndex)) !== -1) {
+                        // ===== TEXT KABLA YA MATCH =====
+                        if (index > lastIndex) {
+                            fragment.appendChild(document.createTextNode(text.substring(lastIndex, index)));
+                        }
+                        // ===== MATCH YENYEWE =====
+                        const mark = document.createElement('mark');
+                        mark.textContent = text.substring(index, index + query.length);
+                        fragment.appendChild(mark);
+                        lastIndex = index + query.length;
+                    }
+
+                    // ===== TEXT ILIYOBAKI =====
+                    if (lastIndex < text.length) {
+                        fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+                    }
+
+                    textNode.parentNode.replaceChild(fragment, textNode);
+                });
+            }
+
+            // ===== EVENT LISTENERS =====
+            let searchTimeout;
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => performSearch(e.target.value), 150);
+            });
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                performSearch('');
+                searchInput.focus();
+            });
+
+            // ===== SCROLL SPY =====
+            function updateActiveNav() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveNav);
+
+            // ===== SMOOTH SCROLL =====
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>
