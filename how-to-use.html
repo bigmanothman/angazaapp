@@ -554,6 +554,95 @@
         }
         
 
+                /* ===== ARCHIVE BUTTON (VINYWAJI) ===== */
+        .archive-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            padding: 6px;
+            background: linear-gradient(135deg, #4A6CF7, #7B5CFC);
+            border-radius: 8px;
+            color: white;
+            vertical-align: middle;
+            margin: 0 4px;
+            box-shadow: 0 3px 8px rgba(74, 108, 247, 0.3);
+            cursor: help;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .archive-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 12px rgba(74, 108, 247, 0.4);
+        }
+
+        .archive-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: white;
+        }
+
+                /* ===== PLUS BUTTON (DASHBOARD '+' ICON) ===== */
+        .plus-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            padding: 6px;
+            background: linear-gradient(135deg, #4A6CF7, #7B5CFC);
+            border-radius: 8px;
+            color: white;
+            vertical-align: middle;
+            margin: 0 4px;
+            box-shadow: 0 3px 8px rgba(74, 108, 247, 0.3);
+            cursor: help;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .plus-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 12px rgba(74, 108, 247, 0.4);
+        }
+
+        .plus-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: white;
+            stroke-width: 2.5;
+        }
+
+        /* ===== DOTS BUTTON (VERTICAL THREE DOTS) ===== */
+        .dots-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            padding: 6px;
+            background: #f0f4ff;
+            border: 1.5px solid #4A6CF7;
+            border-radius: 8px;
+            color: #4A6CF7;
+            vertical-align: middle;
+            margin: 0 4px;
+            cursor: help;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .dots-btn:hover {
+            transform: scale(1.1);
+            background: #4A6CF7;
+            color: white;
+        }
+
+        .dots-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
             .layout {
@@ -706,7 +795,7 @@
                     </div>
                 </div>
 
-                <!-- ===== DROPDOWN: VINYWAJI (TUPU KWA SASA) ===== -->
+                               <!-- ===== DROPDOWN: VINYWAJI ===== -->
                 <div class="nav-dropdown" data-target="vinywaji-main">
                     <button class="nav-dropdown-toggle" type="button">
                         <span class="nav-dropdown-label">
@@ -715,7 +804,18 @@
                         <span class="nav-dropdown-arrow">▾</span>
                     </button>
                     <div class="nav-dropdown-content">
-                        <!-- CONTENT ITAONGEZWA BAADAYE -->
+                        <a href="#vinywaji-form">Kurekodi Bidhaa ya Vinywaji</a>
+                        <a href="#vinywaji-kipimo">Kipimo & Ujazo</a>
+                        <a href="#vinywaji-kontena">Idadi ya Kontena</a>
+                        <a href="#vinywaji-onesha">Namna ya Kuonesha</a>
+                        <a href="#vinywaji-maelezo">Maelezo & Tarehe</a>
+                        <a href="#vinywaji-bei">Taarifa za Bei</a>
+                        <a href="#vinywaji-ziada">Taarifa za Ziada</a>
+                        <a href="#vinywaji-hifadhi">Kuhifadhi Bidhaa</a>
+                        <a href="#vinywaji-dashboard">Dashboard ya Vinywaji</a>
+                        <a href="#vinywaji-hariri">Kuhariri Bidhaa</a>
+                        <a href="#vinywaji-jazilia">Kujazilia Bidhaa</a>
+                        <a href="#vinywaji-mauzo">Namna ya Kurekodi Mauzo</a>
                     </div>
                 </div>
             </nav>
@@ -783,9 +883,15 @@
             <!-- ===== SECTION: FORM NAFAKA ===== -->
             <div class="section" id="form-nafaka">
                 <h2><span class="num">1</span> Kurekodi Bidhaa ya Nafaka (Form Page)</h2>
-                <p>
-                    Ukiwa kwenye <strong>Dashboard page</strong>, bonyeza batani ya <strong>'+'</strong> ili uende kwenye
-                    form page utakapoweka taarifa za bidhaa.
+                                <p>
+                    Ukiwa kwenye <strong>Dashboard page</strong>, bonyeza batani ya
+                    <span class="plus-btn" title="Batani ya Kuongeza Bidhaa">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </span>
+                    ili uende kwenye form page utakapoweka taarifa za bidhaa.
                 </p>
                 <p>
                     Ikifunguka form page, andika jina la bidhaa husika kwenye uwanja wa kuandikia wenye maandishi
@@ -1030,9 +1136,17 @@
                 </p>
 
                 <h3 id="kuhariri">B. Kuhariri Taarifa za Bidhaa</h3>
-                <p>
-                    Ili uweze kuhariri taarifa kuhusu bidhaa, utabonyeza icon ndogo ya <strong>vidoti vitatu</strong> iliyopo
-                    kuliani mwa mstari wa bidhaa husika, ambapo itatokea sehemu ya kuhariri yenye vipengele vifuatavyo:
+                               <p>
+                    Ili uweze kuhariri taarifa kuhusu bidhaa, utabonyeza
+                    <span class="dots-btn" title="Vidoti Vitatu (More Options)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <circle cx="12" cy="5" r="2"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                            <circle cx="12" cy="19" r="2"></circle>
+                        </svg>
+                    </span>
+                    iliyopo kuliani mwa mstari wa bidhaa husika, kisha <strong>'Hariri'</strong>, ambapo itatokea
+                    sehemu ya kuhariri yenye vipengele vifuatavyo:
                 </p>
                 <ol>
                     <li><strong>'Jina la Bidhaa *'</strong>: hapa utahariri Jina.</li>
@@ -1078,10 +1192,17 @@
                 </div>
 
                 <h3 id="kujazilia">C. Kujazilia Kiwango Kilichopo cha Bidhaa</h3>
-                <p>
-                    Ili uweze kujazilia bidhaa, utabonyeza icon ya <strong>vidoti vitatu</strong> iliyopo kulia mwishoni mwa
-                    mstari wa bidhaa husika na kubonyeza <strong>'Jazilia'</strong> ili ije sehemu ya uwanja wa kujazilia.
-                    Ujaziliaji unatofautiana kulingana na asili ya bidhaa husika kama ifuatavyo:
+                               <p>
+                    Ili uweze kujazilia bidhaa, utabonyeza
+                    <span class="dots-btn" title="Vidoti Vitatu (More Options)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <circle cx="12" cy="5" r="2"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                            <circle cx="12" cy="19" r="2"></circle>
+                        </svg>
+                    </span>
+                    iliyopo kulia mwishoni mwa mstari wa bidhaa husika na kubonyeza <strong>'Jazilia'</strong> ili ije
+                    sehemu ya uwanja wa kujazilia. Ujaziliaji unatofautiana kulingana na asili ya bidhaa husika kama ifuatavyo:
                 </p>
                 <ol>
                     <li>
@@ -1285,6 +1406,569 @@
                         <strong>ii. 'Jumla':</strong> Hapa unauza kwa Jumla. Utaweka <strong>Jumla ya idadi</strong> ya Gramu unazotaka kuuza na <strong>Bei ya kuuza ya Jumla</strong> kwa zote.
                         <div class="example">
                             <strong>Mfano:</strong> Unauza Gramu 10,000 kwa Jumla, utaweka '10000' sehemu ya <strong>idadi</strong>. Bei ya kununua kwa Jumla ya zote ni 1,000/= na ya kuuza kwa Jumla ni 2,000/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>1,000/=</strong> na <strong>Jumla ya Mauzo</strong> itakua <strong>2,000/=</strong>.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+                        <!-- ===== MAIN SECTION: VINYWAJI ===== -->
+            <div class="main-heading" id="vinywaji-main">
+                <span class="main-icon">🥤</span>
+                <h2>Vinywaji</h2>
+                <p>Muongozo kamili wa kurekodi na kusimamia bidhaa za Vinywaji</p>
+            </div>
+
+            <!-- ===== SECTION: FORM VINYWAJI ===== -->
+            <div class="section" id="vinywaji-form">
+                <h2><span class="num">1</span> Kurekodi Bidhaa ya Vinywaji (Form Page)</h2>
+                              <p>
+                    Ukiwa kwenye <strong>Dashboard page</strong>, bonyeza batani ya
+                    <span class="plus-btn" title="Batani ya Kuongeza Bidhaa">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </span>
+                    ili uende kwenye form page utakapoweka taarifa za bidhaa.
+                </p>
+                <p>
+                    Ikifunguka form page, andika jina la bidhaa husika kwenye uwanja wa kuandikia wenye maandishi
+                    <strong>"Jina la Bidhaa *"</strong>.
+                </p>
+                <div class="note">
+                    <strong>NB:</strong> Jina lisizidi herufi <strong>100</strong> kuepusha mfumo kutohifadhi taarifa
+                    zisizohitajika za urefu wa jina.
+                </div>
+                <p>
+                    Kwenye kipengele cha <strong>'Aina ya Bidhaa *'</strong> chagua <strong>'Vinywaji'</strong>.
+                </p>
+            </div>
+
+            <!-- ===== SECTION: KIPIMO VINYWAJI ===== -->
+            <div class="section" id="vinywaji-kipimo">
+                <h2><span class="num">2</span> Kipimo & Ujazo wa Kontena</h2>
+                <p>
+                    Itakuja sehemu ya <strong>'Kipimo *'</strong>, ukibonyeza hapa itakuja list ya vizio viwili ambavyo
+                    <strong>kontena moja</strong> (Chupa, Ndoo, Dumu, Pakti, n.k) ya bidhaa husika ina kimojawapo:
+                </p>
+
+                <h4>i. Lita (L)</h4>
+                <p>
+                    Ukichagua hapa Mfumo utatambua <strong>Kontena moja</strong> lina ujazo wa <strong>Lita</strong>.
+                </p>
+
+                <h4>ii. Mililita (ml)</h4>
+                <p>
+                    Ukichagua hapa Mfumo utatambua <strong>Kontena moja</strong> lina ujazo wa <strong>Mililita</strong>.
+                </p>
+
+                <h3>Ujazo wa Kontena Moja</h3>
+                <p>
+                    Baada ya kujaza kizio cha kontena moja, itakuja sehemu ya kuweka <strong>Ujazo wa Kontena Moja</strong>
+                    kulingana na kizio ulichoweka hapo nyuma:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Kama ni 'Lita (L)':</strong> Utaweka Kontena Moja ina Lita ngapi.
+                        <div class="example">
+                            <strong>Mfano:</strong><br>
+                            '0.5' — Kama Kontena ni Nusu Lita.<br>
+                            '1' — Kama Kontena ni Lita Moja.<br>
+                            '2.5' — Kama Kontena ni Lita mbili na Nusu.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ===== SECTION: IDADI YA KONTENA ===== -->
+            <div class="section" id="vinywaji-kontena">
+                <h2><span class="num">3</span> Idadi ya Kontena</h2>
+                <p>
+                    Baada ya kuweka ujazo wa Kontena Moja, itafata sehemu ya <strong>'Idadi ya Kontena'</strong> —
+                    hapa utaweka idadi ya kontena/chupa/ndoo/pakti/dumu unazokusudia kuzirekodi.
+                </p>
+                <div class="example">
+                    <strong>Mfano:</strong> '10' kama unaweka chupa Kumi.
+                </div>
+
+                                <h3>Batani Saidizi (Archive Icon)</h3>
+                <p>
+                    Kulia kwa sehemu hii kuna Batani saidizi
+                    <span class="archive-btn" title="Batani saidizi la vifurushi">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                            <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+                        </svg>
+                    </span>
+                    itakayorahisisha uwekaji wa idadi ya kontena/chupa ikiwa idadi ni kubwa.
+                    Ukiibonyeza utaona list ifuatayo:
+                </p>
+
+
+                <ul>
+                    <li><strong>'Kreti (×24)':</strong> Ikiwa unaingiza kwa Kreti ya <strong>chupa 24</strong>.</li>
+                    <li><strong>'Katoni (×20)':</strong> Ikiwa unaingiza kwa Katoni ya <strong>chupa 20</strong>.</li>
+                    <li><strong>'Katoni (×36)':</strong> Ikiwa unaingiza kwa Katoni ya <strong>chupa 36</strong>.</li>
+                    <li><strong>'Dazeni (×12)':</strong> Ikiwa unaingiza kwa Dazeni, <strong>chupa 12</strong>.</li>
+                    <li><strong>'Nusu Dazeni (×6)':</strong> Ikiwa unaingiza kwa Nusu Dazeni, <strong>chupa 6</strong>.</li>
+                </ul>
+                <p>
+                    Ukichagua mojawapo, itakuja sehemu ya kuweka <strong>idadi ya kiwango husika</strong>
+                    cha Kreti/Katoni/Dazeni/Nusu Dazeni ulizonazo, kisha Mfumo utatambua
+                    <strong>idadi kamili ya kontena/chupa</strong> kupitia idadi hiyo.
+                </p>
+                <div class="example">
+                    <strong>Mfano:</strong> Umechagua 'Kreti (×24)', itatokea sehemu ya kuweka
+                    <strong>idadi kwa Kreti (×24)</strong>. Ukaweka '2' — Mfumo utatambua automatically
+                    <strong>Jumla ya Chupa/Kontena ni 48</strong>.
+                </div>
+            </div>
+
+            <!-- ===== SECTION: NAMNA YA KUONESHA ===== -->
+            <div class="section" id="vinywaji-onesha">
+                <h2><span class="num">4</span> Namna ya Kuonesha Bidhaa</h2>
+                <p>
+                    Baada ya kuweka idadi, itafata sehemu ya namna unavyotaka <strong>Kiwango cha Bidhaa Kioneshwe
+                    kwenye Mfumo</strong>. Ina batani mbili:
+                </p>
+
+                <h4>i. L/ml</h4>
+                <p>
+                    Ukichagua hapa, Mfumo utaonesha kiwango kwa <strong>Lita</strong> au <strong>Mililita</strong>
+                    kulingana na asili ya bidhaa uliyoweka nyuma sehemu ya <strong>'Kipimo *'</strong>.
+                </p>
+                <div class="example">
+                    <strong>Mfano:</strong><br>
+                    Bidhaa ni ya kipimo cha Lita, ujazo kwa kontena moja ukaweka 2L, Idadi ya Kontena ukaweka '2' —
+                    Mfumo utaonesha <strong>4L</strong> badala ya <strong>Kontena 2</strong>.<br>
+                    Bidhaa ni ya kipimo cha Mililita, ujazo kwa kontena moja ukaweka 2000ml, Idadi ya Kontena ukaweka '2' —
+                    Mfumo utaonesha <strong>4000ml</strong> badala ya <strong>Kontena 2</strong>.
+                </div>
+
+                <h4>ii. Kontena</h4>
+                <p>
+                    Ukichagua hapa, Mfumo utaonesha kiwango/idadi kwa <strong>Kontena/Chupa/Ndoo</strong>
+                    kama ulivyoweka sehemu ya <strong>'Idadi ya Kontena'</strong>.
+                </p>
+                <div class="example">
+                    <strong>Mfano:</strong> Bidhaa ni ya kipimo cha Lita, ujazo kwa kontena moja ukaweka 2L,
+                    Idadi ya Kontena ukaweka '2' — Mfumo utaonesha <strong>Kontena 2</strong> badala ya <strong>4L</strong>.
+                </div>
+
+                <div class="note">
+                    <strong>NB:</strong> Sehemu hii unaweza kubadili jina la kifungashio kwa kubonyeza
+                    batani ya <strong>'Badili Jina'</strong> iliyopo chini ya batani hizi mbili. Itatokea list ifuatayo
+                    ambapo ukichagua jina mojawapo, ndilo Mfumo utalolitumia kama jina la kifungashio kwa bidhaa husika:
+                    <strong>Kontena</strong>, <strong>Chupa</strong>, <strong>Ndoo</strong>, <strong>Dumu</strong>,
+                    <strong>Pakti</strong>.
+                </div>
+            </div>
+
+            <!-- ===== SECTION: MAELEZO VINYWAJI ===== -->
+            <div class="section" id="vinywaji-maelezo">
+                <h2><span class="num">5</span> Maelezo & Tarehe ya Mwisho</h2>
+                <h3>Maelezo ya (Hiari)</h3>
+                <p>
+                    Baada ya kuweka namna bidhaa ionekane, inafata sehemu ya <strong>'Maelezo ya (Hiari)'</strong>
+                    ambapo hapa unaweza kuandika taarifa za ziada kuhusu bidhaa zako. Baada ya kuhifadhi zitaonekana
+                    kwenye Dashboard. Kipengele hiki <strong>si lazima</strong> kujaza.
+                </p>
+
+                <h3>Tarehe ya Mwisho (Hiari)</h3>
+                <p>
+                    Kitafata kipengele cha <strong>'Tarehe ya Mwisho (Hiari)'</strong> ambapo hapa utaweza kuweka
+                    tarehe ambayo bidhaa husika ita-expire. Baada ya kuhifadhi, Mfumo utakukumbusha ikiwa bidhaa
+                    husika itakaribia ku-expire kulingana na tarehe uliyoiweka. Kipengele hiki <strong>si lazima</strong>
+                    kukijaza pia.
+                </p>
+            </div>
+
+            <!-- ===== SECTION: BEI VINYWAJI ===== -->
+            <div class="section" id="vinywaji-bei">
+                <h2><span class="num">6</span> Taarifa za Bei</h2>
+                <p>
+                    Kitafata kipengele cha <strong>'Taarifa za Bei'</strong>. Hapa utaweka taarifa za kununua na
+                    kuuza kwa bidhaa husika kama ifuatavyo:
+                </p>
+
+                <h3>A. Bei ya Kununua</h3>
+
+                <h4>A, i. Jumla</h4>
+                <p>
+                    Hapa utaingiza bei ya kununua kwa <strong>Jumla</strong> ya kiwango chote cha bidhaa husika
+                    ikiwa hutaki kuingiza bei hiyo kwa kipimo kimoja cha bidhaa husika kupitia batani ya
+                    <strong>'Kipimo'</strong> iliyopo kulia kwake.
+                </p>
+                <div class="example">
+                    <strong>Mfano (Kontena/Ndoo/Chupa/Pakti):</strong><br>
+                    Ikiwa umechagua bidhaa kuonekana kwa Kontena/Ndoo/Chupa/Pakti, idadi Kontena 5, kisha hapa ukaweka
+                    bei <strong>5,000/=</strong> — Mfumo utaichukua kama bei ya <strong>'Jumla'</strong> kwa Kontena
+                    zote tano na kuweza kutambua bei kwa Kontena moja automatically ambayo itakua
+                    <strong>1,000/=</strong>.
+                </div>
+                <div class="example">
+                    <strong>Mfano (Lita):</strong><br>
+                    Zimewekwa 5L, kisha hapa ukaweka bei <strong>5,000/=</strong> — Mfumo utaichukua kama bei ya
+                    <strong>'Jumla'</strong> kwa Lita tano zote na kuweza kutambua bei kwa Lita moja automatically
+                    ambayo itakua <strong>1,000/=</strong>.
+                </div>
+                <div class="example">
+                    <strong>Mfano (Mililita):</strong><br>
+                    Zimewekwa 5000ml, kisha hapa ukaweka bei <strong>5,000/=</strong> — Mfumo utaichukua kama bei ya
+                    <strong>'Jumla'</strong> kwa Mililita 5000 zote na kuweza kutambua bei kwa Mililita moja
+                    automatically ambayo itakua <strong>1/=</strong>.
+                </div>
+
+                <h4>A, ii. Kipimo</h4>
+                <p>
+                    Hapa utaingiza bei ya kununua kwa <strong>kipimo kimoja</strong> cha bidhaa husika ikiwa hutaki
+                    kuingiza bei hiyo kwa Jumla yote ya bidhaa kupitia batani ya <strong>'Jumla'</strong> iliyopo
+                    kushoto kwake.
+                </p>
+                <div class="example">
+                    <strong>Mfano (Kontena/Ndoo/Chupa/Pakti):</strong><br>
+                    Ikiwa umechagua bidhaa kuonekana kwa Kontena/Ndoo/Chupa/Pakti, idadi Kontena 5, kisha hapa ukaweka
+                    bei <strong>1,000/=</strong> — Mfumo utaichukua kama bei ya <strong>'Kipimo'</strong> kwa Kontena
+                    moja na kuweza kutambua bei ya jumla kwa Kontena tano zote automatically ambayo itakua
+                    <strong>5,000/=</strong>.
+                </div>
+                <div class="example">
+                    <strong>Mfano (Lita):</strong><br>
+                    Zimewekwa 5L, kisha hapa ukaweka bei <strong>1,000/=</strong> — Mfumo utaichukua kama bei ya
+                    <strong>'Kipimo'</strong> kwa Lita moja na kuweza kutambua bei ya jumla kwa Lita tano zote
+                    automatically ambayo itakua <strong>5,000/=</strong>.
+                </div>
+                <div class="example">
+                    <strong>Mfano (Mililita):</strong><br>
+                    Zimewekwa 5000ml, kisha hapa ukaweka bei <strong>1/=</strong> — Mfumo utaichukua kama bei ya
+                    <strong>'Kipimo'</strong> kwa Mililita moja na kuweza kutambua bei ya jumla kwa Mililita 5000 zote
+                    automatically ambayo itakua <strong>5,000/=</strong>.
+                </div>
+
+                <h3>B. Bei ya Kuuza</h3>
+
+                <h4>B, i. Kipimo</h4>
+                <p>
+                    Hapa utaingiza bei ya kuuza kwa <strong>kipimo kimoja</strong> cha bidhaa husika ikiwa hutaki
+                    kuingiza bei hiyo kwa Jumla yote ya bidhaa kupitia batani ya <strong>'Jumla'</strong> iliyopo
+                    kulia kwake.
+                </p>
+                <div class="example">
+                    <strong>Mfano (Kontena/Ndoo/Chupa/Pakti):</strong><br>
+                    Ikiwa umechagua bidhaa kuonekana kwa Kontena/Ndoo/Chupa/Pakti, idadi Kontena 5, kisha hapa ukaweka
+                    bei <strong>2,000/=</strong> — Mfumo utaichukua kama bei ya <strong>'Kipimo'</strong> kwa Kontena
+                    moja na kuweza kutambua bei ya jumla kwa Kontena tano zote automatically ambayo itakua
+                    <strong>10,000/=</strong>.
+                </div>
+                <div class="example">
+                    <strong>Mfano (Mililita):</strong><br>
+                    Zimewekwa 5000ml, kisha hapa ukaweka bei <strong>2/=</strong> — Mfumo utaichukua kama bei ya
+                    <strong>'Kipimo'</strong> kwa Mililita moja na kuweza kutambua bei ya jumla kwa Mililita 5000 zote
+                    automatically ambayo itakua <strong>10,000/=</strong>.
+                </div>
+
+                <h4>B, ii. Jumla</h4>
+                <p>
+                    Hapa utaingiza bei ya kuuza kwa <strong>Jumla</strong> ya kiwango chote cha bidhaa husika
+                    ikiwa hutaki kuingiza bei hiyo kwa kipimo kimoja cha bidhaa husika kupitia batani ya
+                    <strong>'Kipimo'</strong> iliyopo kushoto kwake.
+                </p>
+                <div class="example">
+                    <strong>Mfano (Kontena/Ndoo/Chupa/Pakti):</strong><br>
+                    Ikiwa umechagua bidhaa kuonekana kwa Kontena/Ndoo/Chupa/Pakti, idadi Kontena 5, kisha hapa ukaweka
+                    bei <strong>10,000/=</strong> — Mfumo utaichukua kama bei ya <strong>'Jumla'</strong> kwa Kontena
+                    tano zote na kuweza kutambua bei kwa Kontena moja automatically ambayo itakua
+                    <strong>2,000/=</strong>.
+                </div>
+                <div class="example">
+                    <strong>Mfano (Mililita):</strong><br>
+                    Zimewekwa 5000ml, kisha hapa ukaweka bei <strong>10,000/=</strong> — Mfumo utaichukua kama bei ya
+                    <strong>'Jumla'</strong> kwa Mililita 5000 zote na kuweza kutambua bei kwa Mililita moja
+                    automatically ambayo itakua <strong>2/=</strong>.
+                </div>
+
+                <div class="note">
+                    <strong>NB:</strong> Bei ya kuuza ni lazima iwe <strong>kubwa kuliko</strong> ya kununua ili Mfumo
+                    uweze kukujulisha namna mauzo yako yanavyokwenda ikiwa ni kwa <strong>Faida</strong> au kwa
+                    <strong>Hasara</strong>.
+                </div>
+            </div>
+
+            <!-- ===== SECTION: TAARIFA ZAIDI VINYWAJI ===== -->
+            <div class="section" id="vinywaji-ziada">
+                <h2><span class="num">7</span> Taarifa za Ziada</h2>
+                <p>
+                    Baada ya kuweka taarifa za bei ya kuuza na kununua, itakuja sehemu ya
+                    <strong>'Taarifa za Ziada'</strong> ambapo ukipabonyeza zitakuja taarifa za Bei ya
+                    <strong>kununua</strong>, <strong>kuuza</strong> na <strong>faida</strong> kwa
+                    <strong>1 Kontena/Ndoo/Chupa/Pakti</strong>, <strong>1L</strong> na <strong>1ml</strong> ambazo
+                    hizi Mfumo utazitumia kukuonesha ikiwa mauzo yako yanafanyika kwa <strong>Faida</strong> au kwa
+                    <strong>Hasara</strong>.
+                </p>
+                <p>
+                    Pia itaoneshwa <strong>Faida ya Jumla</strong> inayotarajiwa kupatikana baada ya mauzo yote ya
+                    bidhaa husika kufanyika kulingana na bei ya kuuza na kununua ulizoweka.
+                </p>
+            </div>
+
+            <!-- ===== SECTION: HIFADHI VINYWAJI ===== -->
+            <div class="section" id="vinywaji-hifadhi">
+                <h2><span class="num">8</span> Kuhifadhi Bidhaa</h2>
+                <p>
+                    Ukimaliza kujaza na kuhakiki taarifa za bidhaa husika kikamilifu, utabonyeza
+                    <strong>'Hifadhi Bidhaa'</strong> ili bidhaa ihifadhiwe kikamilifu kwenye Mfumo na utaweza
+                    kukutana nayo kwenye pages za msingi kama <strong>Dashboard</strong> na <strong>Mauzo</strong>
+                    ili kuendelea na taratibu nyinginezo za kimauzo.
+                </p>
+            </div>
+
+            <!-- ===== SECTION: DASHBOARD VINYWAJI ===== -->
+            <div class="section" id="vinywaji-dashboard">
+                <h2><span class="num">9</span> Dashboard ya Vinywaji</h2>
+                <p>
+                    Page ya <strong>Dashboard</strong> ni mahali unapoona bidhaa zako zote zilizohifadhiwa.
+                    Hapa unaweza kuona taarifa za msingi za bidhaa, kuzihariri, kuzifuta, au kuzijazilia.
+                </p>
+
+                <h3>A. Kuona Taarifa Zote za Bidhaa</h3>
+                <p>
+                    Ili uweze kuona taarifa zote kuhusu bidhaa kama zilivyohifadhiwa, utabonyeza bidhaa husika ambapo
+                    itatokea sehemu itayokuonesha taarifa zote za msingi za bidhaa hiyo kama ulivyozihifadhi kama vile;
+                    <strong>idadi</strong>, bei za <strong>kuuza</strong> na <strong>kununua</strong> na
+                    <strong>faida</strong>.
+                </p>
+                <p>
+                    Kwenye sehemu hii pia zipo batani mbili; <strong>'Hariri'</strong> na
+                    <strong class="red">'Futa'</strong> itayofuta kabisa taarifa za bidhaa husika kwenye Mfumo
+                    ikibonyezwa baada ya uthibitisho.
+                </p>
+            </div>
+
+            <!-- ===== SECTION: KUHARIRI VINYWAJI ===== -->
+            <div class="section" id="vinywaji-hariri">
+                <h2><span class="num">10</span> Kuhariri Taarifa za Bidhaa</h2>
+                                <p>
+                    Ili uweze kuhariri taarifa kuhusu bidhaa, utabonyeza
+                    <span class="dots-btn" title="Vidoti Vitatu (More Options)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <circle cx="12" cy="5" r="2"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                            <circle cx="12" cy="19" r="2"></circle>
+                        </svg>
+                    </span>
+                    iliyopo kuliani mwa mstari wa bidhaa husika, kisha <strong>'Hariri'</strong> (au iliyopo kwenye
+                    sehemu ya kuonesha taarifa zote za bidhaa). Itatokea sehemu ya kuhariri yenye vipengele vifuatavyo:
+                </p>
+                <ol>
+                    <li><strong>'Jina la Bidhaa *'</strong>: hapa utahariri Jina.</li>
+                    <li><strong>'Maelezo (Hiari)'</strong>: hapa utahariri Maelezo ya hiari kuhusu bidhaa yako.</li>
+                    <li>
+                        <strong>Taarifa za Kontena/Chupa/Ndoo/Pakti</strong> — Hapa kuna vipengele viwili:
+                        <ul>
+                            <li>
+                                <strong>i. 'Ujazo wa Kontena/Chupa/Ndoo/Pakti moja'</strong> — Hapa utahariri
+                                ujazo wa Kontena/Chupa/Ndoo/Pakti moja kati ya zilizopo.
+                            </li>
+                            <li>
+                                <strong>ii. 'Idadi ya Kontena/Chupa/Ndoo/Pakti'</strong> — Hapa utahariri idadi
+                                kamili ya kontena/Chupa/Ndoo/Pakti.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>'Onesha kwa'</strong> — Hapa utahariri namna gani kiwango cha bidhaa husika kionekane,
+                        kati ya <strong>'Kontena/Chupa/Ndoo/Pakti'</strong> au <strong>'L/ml'</strong>.
+                    </li>
+                    <li><strong>'Bei ya Kununua *'</strong> — Hapa utahariri bei ya kununua kwa namna kama ilivyoelekezwa kwenye Taarifa za Bei.</li>
+                    <li><strong>'Bei ya Kuuza *'</strong> — Hapa utahariri bei ya kuuza kwa namna kama ilivyoelekezwa kwenye Taarifa za Bei.</li>
+                    <li>Taarifa kwa ufupi kuhusu bei za jumla za <strong>kuuza</strong> na <strong>kununua</strong> na <strong>faida</strong> ya jumla zitazohifadhiwa kwenye Mfumo kulingana na namna ulivyohariri bei.</li>
+                    <li>Baada ya kujiridhisha ukamilifu wa taarifa ulizohariri, bonyeza <strong>'Hifadhi'</strong> ili zihifadhiwe, au <strong>'Ghairi'</strong> kughairi.</li>
+                </ol>
+                <div class="note">
+                    <strong>NB:</strong> Bei ya kuuza ni lazima iwe <strong>kubwa kuliko</strong> ya kununua ili Mfumo
+                    uweze kukujulisha namna mauzo yako yanavyokwenda ikiwa ni kwa <strong>Faida</strong> au kwa
+                    <strong>Hasara</strong>.
+                </div>
+            </div>
+
+            <!-- ===== SECTION: KUJAZILIA VINYWAJI ===== -->
+            <div class="section" id="vinywaji-jazilia">
+                <h2><span class="num">11</span> Kujazilia Kiwango Kilichopo cha Bidhaa</h2>
+                              <p>
+                    Ili uweze kujazilia bidhaa, utabonyeza
+                    <span class="dots-btn" title="Vidoti Vitatu (More Options)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <circle cx="12" cy="5" r="2"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                            <circle cx="12" cy="19" r="2"></circle>
+                        </svg>
+                    </span>
+                    iliyopo kulia mwishoni mwa mstari wa bidhaa husika na kubonyeza <strong>'Jazilia'</strong> ili ije
+                    sehemu ya uwanja wa Kujazilia. Ujaziliaji unatofautiana kulingana na asili ya bidhaa husika kama ifuatavyo:
+                </p>
+                <ol>
+                    <li>
+                        <strong>Kwa bidhaa ambayo kiwango chake kinaoneshwa kwa 'Kontena/Chupa/Ndoo/Pakti':</strong>
+                        unaweza kuijazilia kwa <strong>'Kontena/Chupa/Ndoo/Pakti'</strong>, <strong>'L'</strong> ama
+                        <strong>'ml'</strong> na Mfumo utaweza kutambua kiwango husika kilichojaziliwa kwa asili
+                        husika ya bidhaa.
+                        <div class="example">
+                            <strong>Mfano:</strong> Kabla kiasi kilikua Kontena 6 ambapo moja ina ujazo wa 2L
+                            (ikimaanisha jumla ya Lita: 12L). Ukajazilia '4' kwa <strong>'Kontena'</strong> ama '8'L
+                            kwa <strong>'L'</strong> ama '8000'ml kwa <strong>'ml'</strong> — Mfumo utatambua kuwa
+                            zimeongezwa Kontena 4 na hivyo jumla mpya itakua <strong>Kontena 10</strong> sawa na
+                            <strong>20L</strong> ama <strong>20000ml</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Kwa bidhaa ambayo kiwango chake kinaoneshwa kwa 'L/ml':</strong>
+                        unaweza kuijazilia kwa <strong>'L'</strong>, <strong>'ml'</strong> ama
+                        <strong>'Kontena/Chupa/Ndoo/Pakti'</strong>, na Mfumo utaweza kutambua kiwango husika
+                        kilichojaziliwa kwa asili husika ya bidhaa.
+                        <div class="example">
+                            <strong>Mfano:</strong> Kabla kiasi kilikua 12L, Kontena 4 (ikimaanisha moja ina ujazo
+                            wa 2L). Ukajazilia '8'L kwa <strong>'L'</strong> ama '8000'ml kwa <strong>'ml'</strong>
+                            ama '4' kwa <strong>'Kontena'</strong> — Mfumo utatambua kuwa zimeongezwa 8L na hivyo
+                            jumla mpya itakua <strong>20L</strong> sawa na <strong>20000ml</strong> ama
+                            <strong>Kontena 10</strong>.
+                        </div>
+                    </li>
+                    <li>Baada ya kujazilia kiwango unachotaka, utabonyeza <strong>'Hifadhi'</strong> idadi mpya itahifadhiwa ama <strong>'Ghairi'</strong> kughairi.</li>
+                </ol>
+                <div class="note">
+                    <strong>NB:</strong> Mabadiliko haya ya idadi kwenye kujazilia <strong>hayatabadili</strong> bei
+                    za kuuza na kununua kwa kipimo (kwa kontena moja ama lita moja). Yatabadili bei za jumla za kuuza
+                    na kununua kulingana na kiwango kilichoongezwa.
+                </div>
+            </div>
+
+            <!-- ===== SECTION: MAUZO VINYWAJI ===== -->
+            <div class="section" id="vinywaji-mauzo">
+                <h2><span class="num">12</span> Namna ya Kurekodi Mauzo</h2>
+                <p>
+                    Page ya <strong>Mauzo</strong> inatumika kurekodi taarifa na mwenendo mzima wa mauzo unayoyafanya.
+                    Kupitia page hii Mfumo utaweza kukujulisha ikiwa mauzo yanafanyika kwa <strong>Faida</strong> ama
+                    <strong>Hasara</strong> na ikiwa mauzo <strong>yanapanda</strong> ama <strong>yanashuka</strong>.
+                    Sehemu za msingi za page hii zimeelezwa kwa undani kwenye Muongozo wa Nafaka.
+                </p>
+                <p>
+                    Kila bidhaa ina namna yake ya kurekodi mauzo kulingana na asili yake kama ifuatavyo:
+                </p>
+
+                               <h3>1. Mauzo ikiwa Bidhaa Inayoonekana kwa 'Kontena/Chupa/Ndoo/Pakti'</h3>
+                <p>Unaweza <strong>kuuza kwa</strong>:</p>
+                <ul>
+                    <li>
+                        <strong>i. 'Kontena/Chupa/Ndoo/Pakti':</strong> Hapa unauza kwa Kontena/Chupa/Ndoo/Pakti moja moja
+                        (Reja Reja), ambapo utaweka <strong>idadi</strong> ya Kontena/Chupa/Ndoo/Pakti unazotaka kuuza
+                        na <strong>Bei ya kuuza kwa</strong> Kontena/Chupa/Ndoo/Pakti moja kisha Mfumo utakujulisha
+                        <strong>Jumla ya Mauzo</strong> na <strong>Faida</strong> ama <strong>Hasara</strong>
+                        itayopatikana.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza Kontena tano, utaweka '5' sehemu ya <strong>idadi</strong>.
+                            Bei ya kununua kwa Kontena ni 100/= na ya kuuza kwa Kontena ni 200/=. Mfumo utatambua
+                            <strong>Faida</strong> itayopatikana ni <strong>500/=</strong> na
+                            <strong>Jumla ya Mauzo</strong> itakua <strong>1,000/=</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>ii. 'Jumla':</strong> Hapa unauza kwa Jumla, ambapo utaweka <strong>Jumla ya idadi</strong>
+                        ya Kontena/Chupa/Ndoo/Pakti unazotaka kuuza na <strong>Bei ya kuuza ya Jumla</strong> kwa zote
+                        kisha Mfumo utakujulisha <strong>Jumla ya Mauzo</strong> na <strong>Faida</strong> ama
+                        <strong>Hasara</strong>.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza Kontena Kumi kwa Jumla, utaweka '10' sehemu ya
+                            <strong>idadi</strong>. Bei ya kununua kwa Jumla ya zote ni 1,000/= na ya kuuza kwa Jumla
+                            ni 2,000/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>1,000/=</strong>
+                            na <strong>Jumla ya Mauzo</strong> itakua <strong>2,000/=</strong>.
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- ===== VIFURUSHI (BATCH) — USADIIZI WA IDADI KUBWA ===== -->
+                <h4>Usaidizi wa Kuuza Idadi Kubwa (Vifurushi)</h4>
+                <p>
+                    Kurahisisha uuzaji wa bidhaa ya asili hii ikiwa utahitaji kuuza kwa <strong>idadi kubwa</strong>,
+                    bonyeza batani
+                    <span class="archive-btn" title="Batani la Vifurushi">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                            <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+                        </svg>
+                    </span>
+                    iliyo mbele ya neno <strong>"Weka kwa vifurushi (hiari):"</strong>. Itakuja list ya kuchagua vifurushi —
+                    chagua unachokitaka kisha weka idadi ya vifurushi unayotaka kwenye
+                    <strong>'Idadi ya (Kifurushi ulichochagua)'</strong> na Mfumo utatambua
+                    <strong>idadi kamili</strong> ya Kontena/Chupa/Ndoo/Pakti kusudiwa kwa kifurushi husika.
+                </p>
+                <div class="example">
+                    <strong>Mfano:</strong> Umechagua <strong>'Kreti (×24)'</strong> — itatokea sehemu ya kuweka
+                    <strong>idadi kwa Kreti (×24)</strong>. Ukaweka '2' — Mfumo utatambua automatically
+                    <strong>Jumla ya Chupa/Kontena ni 48</strong>.
+                </div>
+
+
+                <h3>2. Mauzo ikiwa Bidhaa Inayoonekana kwa 'L'</h3>
+                <p>Unaweza <strong>kuuza kwa</strong>:</p>
+                <ul>
+                    <li>
+                        <strong>i. 'L':</strong> Hapa unauza kwa Lita moja moja (Reja Reja), ambapo utaweka
+                        <strong>idadi</strong> ya Lita unazotaka kuuza na <strong>Bei ya kuuza kwa</strong> Lita moja
+                        kisha Mfumo utakujulisha <strong>Jumla ya Mauzo</strong> na <strong>Faida</strong> ama
+                        <strong>Hasara</strong>.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza Lita tano, utaweka '5' sehemu ya <strong>idadi</strong>.
+                            Bei ya kununua kwa Lita ni 100/= na ya kuuza kwa Lita ni 200/=. Mfumo utatambua
+                            <strong>Faida</strong> itayopatikana ni <strong>500/=</strong> na
+                            <strong>Jumla ya Mauzo</strong> itakua <strong>1,000/=</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>ii. 'Jumla':</strong> Hapa unauza kwa Jumla, ambapo utaweka <strong>Jumla ya idadi</strong>
+                        ya Lita unazotaka kuuza na <strong>Bei ya kuuza ya Jumla</strong> kwa zote.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza Lita Kumi kwa Jumla, utaweka '10' sehemu ya
+                            <strong>idadi</strong>. Bei ya kununua kwa Jumla ya zote ni 1,000/= na ya kuuza kwa Jumla
+                            ni 2,000/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>1,000/=</strong>
+                            na <strong>Jumla ya Mauzo</strong> itakua <strong>2,000/=</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>iii. 'ml':</strong> Hapa unauza kwa Mililita moja moja (Reja Reja), ambapo utaweka
+                        <strong>idadi</strong> ya Mililita unazotaka kuuza na <strong>Bei ya kuuza kwa</strong>
+                        Mililita moja.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza 5000ml, utaweka '5000' sehemu ya <strong>idadi</strong>.
+                            Bei ya kununua kwa Mililita ni 0.1/= na ya kuuza kwa Mililita ni 0.2/=. Mfumo utatambua
+                            <strong>Faida</strong> itayopatikana ni <strong>500/=</strong> na
+                            <strong>Jumla ya Mauzo</strong> itakua <strong>1,000/=</strong>.
+                        </div>
+                    </li>
+                </ul>
+
+                <h3>3. Mauzo ikiwa Bidhaa Inayoonekana kwa 'ml'</h3>
+                <p>Unaweza <strong>kuuza kwa</strong>:</p>
+                <ul>
+                    <li>
+                        <strong>i. 'ml':</strong> Hapa unauza kwa Mililita moja moja (Reja Reja), ambapo utaweka
+                        <strong>idadi</strong> ya Mililita unazotaka kuuza na <strong>Bei ya kuuza kwa</strong>
+                        Mililita moja kisha Mfumo utakujulisha <strong>Jumla ya Mauzo</strong> na <strong>Faida</strong>
+                        ama <strong>Hasara</strong>.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza 5000ml, utaweka '5000' sehemu ya <strong>idadi</strong>.
+                            Bei ya kununua kwa Mililita ni 0.1/= na ya kuuza kwa Mililita ni 0.2/=. Mfumo utatambua
+                            <strong>Faida</strong> itayopatikana ni <strong>500/=</strong> na
+                            <strong>Jumla ya Mauzo</strong> itakua <strong>1,000/=</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>ii. 'Jumla':</strong> Hapa unauza kwa Jumla, ambapo utaweka <strong>Jumla ya idadi</strong>
+                        ya Mililita unazotaka kuuza na <strong>Bei ya kuuza ya Jumla</strong> kwa zote.
+                        <div class="example">
+                            <strong>Mfano:</strong> Unauza 10000ml kwa Jumla, utaweka '10000' sehemu ya
+                            <strong>idadi</strong>. Bei ya kununua kwa Jumla ya zote ni 1,000/= na ya kuuza kwa Jumla
+                            ni 2,000/=. Mfumo utatambua <strong>Faida</strong> itayopatikana ni <strong>1,000/=</strong>
+                            na <strong>Jumla ya Mauzo</strong> itakua <strong>2,000/=</strong>.
                         </div>
                     </li>
                 </ul>
